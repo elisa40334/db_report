@@ -64,21 +64,26 @@
             $part = urldecode($parts[1]);
             $part = iconv('UTF-8', 'ISO-8859-1//IGNORE', $part);
             // 載入db.php來連結資料庫
-            require_once 'dbconnect.php';
-            // 設置一個空陣列來放資料
-            $datas = array();
-            // echo $part;
-            $sql = "SELECT * FROM employee WHERE EName LIKE '%$part%'";
-            $result = mysqli_query($link,$sql);
-
-            if ($result->num_rows > 0) {
-                // output data of each row
-                while($row = $result->fetch_assoc()) {
-                    echo  "<br><div id='department-result' class='row mt-3'><a class='dropdown-item' href='employee.php?employee=" . $row["EName"] . "'>". $row["EName"]." 職位: ". $row["position"]. " " . " 電話: " . $row["EPhone"] . "</a><br>";
+            if($part){
+                require_once 'dbconnect.php';
+                // 設置一個空陣列來放資料
+                $datas = array();
+                // echo $part;
+                $sql = "SELECT * FROM employee WHERE EName LIKE '%$part%'";
+                $result = mysqli_query($link,$sql);
+                if ($result->num_rows > 0) {
+                    // output data of each row
+                    while($row = $result->fetch_assoc()) {
+                        echo  "<br><div id='department-result' class='row mt-3'><a class='dropdown-item' href='employee.php?employee=" . $row["EName"] . "'>". $row["EName"]." 職位: ". $row["position"]. " " . " 電話: " . $row["EPhone"] . "</a><br>";
+                    }
+                } else {
+                    echo "暫無資料";
                 }
             } else {
                 echo "暫無資料";
             }
+
+            
         ?>
 
     </main>
