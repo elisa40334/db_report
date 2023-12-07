@@ -81,7 +81,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="modifyModalLabel">單位編輯資料</h5>
+                        <h5 class="modal-title" id="modifyModalLabel">單位資料編輯</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">

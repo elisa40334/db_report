@@ -2,12 +2,6 @@
 <html lang="zh-TW">
 
 <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
-        crossorigin="anonymous"></script>
-    <!--引用bootstrap-->
     <meta charset="UTF-8">
     <title>部門</title>
     <link rel="stylesheet" href="department.css">
@@ -53,9 +47,6 @@
     <main>
         <!--抓單位名字放最上面-->
         <div id="department-name"></div>
-        <!--動態生成card放的區塊-->
-        <div id="department-result" class="row mt-3"></div>
-        <!--寫PHP 動態生成card-->
 
         <?php
             $URL = $_SERVER['REQUEST_URI'];
@@ -77,12 +68,17 @@
                     echo  "<br><div id='department-result' class='row mt-3'><a class='dropdown-item' href='employee.php?employee=" . $row["EName"] . "'>". $row["EName"]." 職位: ". $row["position"]. " " . " 電話: " . $row["EPhone"] . "</a><br>";
                 }
             } else {
-                echo "暫無資料";
+                echo "<br><div id='department-result' dropdown-item'>暫無資料<br>";
             }
         ?>
 
     </main>
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+        crossorigin="anonymous"></script>
+    <!--引用bootstrap-->
 </body>
 
 </html>
