@@ -42,40 +42,100 @@
                     學術單位
                     <div class="dropdown-content" id="academic">
                         <!-- 動態加入 -->
-                        <a href="unit.php?unit=電機資訊學院" class="link">電機資訊學院</a>
-                        <a href="unit.php?unit=123學院" class="link">123學院</a>
+                        <?php
+                            require_once 'dbconnect.php';
+                            $datas = array();
+                            $sql = "SELECT * FROM unit WHERE category = '學術單位'";
+                            $result = mysqli_query($link,$sql);
+
+                            if ($result->num_rows > 0) {
+                                while($row = $result->fetch_assoc()) {
+                                    echo  "<a class='link' href='unit.php?unit=" . $row["UName"] . "'>" . $row["UName"] . "</a>";
+                                }
+                            } else {
+                                echo "暫無資料";
+                            }
+                        ?>
                     </div>
                 </div>
                 <div class="column">
                     行政單位
                     <div class="dropdown-content" id="administrative">
                         <!-- 動態加入 -->
-                        <a href="unit.php">test-a</a>
-                        <a href="unit.php">test-b</a>
+                        <?php
+                            require_once 'dbconnect.php';
+                            $datas = array();
+                            $sql = "SELECT * FROM unit WHERE category = '行政單位'";
+                            $result = mysqli_query($link,$sql);
+
+                            if ($result->num_rows > 0) {
+                                while($row = $result->fetch_assoc()) {
+                                    echo  "<a class='link' href='unit.php?unit=" . $row["UName"] . "'>" . $row["UName"] . "</a>";
+                                }
+                            } else {
+                                echo "暫無資料";
+                            }
+                        ?>
                     </div>
                 </div>
                 <div class="column">
                     校友公關
                     <div class="dropdown-content" id="alumni">
                         <!-- 動態加入 -->
-                        <a href="unit.php">test-a</a>
-                        <a href="unit.php">test-b</a>
+                        <?php
+                            require_once 'dbconnect.php';
+                            $datas = array();
+                            $sql = "SELECT * FROM unit WHERE category = '校友公關'";
+                            $result = mysqli_query($link,$sql);
+
+                            if ($result->num_rows > 0) {
+                                while($row = $result->fetch_assoc()) {
+                                    echo  "<a class='link' href='unit.php?unit=" . $row["UName"] . "'>" . $row["UName"] . "</a>";
+                                }
+                            } else {
+                                echo "暫無資料";
+                            }
+                        ?>
                     </div>
                 </div>
                 <div class="column">
                     研究中心及其他
                     <div class="dropdown-content" id="research">
                         <!-- 動態加入 -->
-                        <a href="unit.php">test-a</a>
-                        <a href="unit.php">test-b</a>
+                        <?php
+                            require_once 'dbconnect.php';
+                            $datas = array();
+                            $sql = "SELECT * FROM unit WHERE category = '研究中心及其他'";
+                            $result = mysqli_query($link,$sql);
+
+                            if ($result->num_rows > 0) {
+                                while($row = $result->fetch_assoc()) {
+                                    echo  "<a class='link' href='unit.php?unit=" . $row["UName"] . "'>" . $row["UName"] . "</a>";
+                                }
+                            } else {
+                                echo "暫無資料";
+                            }
+                        ?>
                     </div>
                 </div>
                 <div class="column">
                     馬祖
                     <div class="dropdown-content" id="matsu">
                         <!-- 動態加入 -->
-                        <a href="unit.php">test-a</a>
-                        <a href="unit.php">test-b</a>
+                        <?php
+                            require_once 'dbconnect.php';
+                            $datas = array();
+                            $sql = "SELECT * FROM unit WHERE category = '馬祖'";
+                            $result = mysqli_query($link,$sql);
+
+                            if ($result->num_rows > 0) {
+                                while($row = $result->fetch_assoc()) {
+                                    echo  "<a class='link' href='unit.php?unit=" . $row["UName"] . "'>" . $row["UName"] . "</a>";
+                                }
+                            } else {
+                                echo "暫無資料";
+                            }
+                        ?>
                     </div>
                 </div>
             </div>
