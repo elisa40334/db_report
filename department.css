@@ -1,0 +1,33 @@
+/* 基本樣式 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/*固定最上面的東西(往下滑還在)*/
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgb(40, 50, 60);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.dropdown{
+    display: flex;
+    align-items: center;
+}
+
+/*預留位置*/
+main {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}

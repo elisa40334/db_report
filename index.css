@@ -1,0 +1,123 @@
+/* 基本樣式 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/*固定最上面的東西(往下滑還在)*/
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgb(40, 50, 60);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/*預留位置*/
+main {
+    margin-top: 150px;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+/*header*/
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: rgb(40, 50, 60);
+}
+
+.combined-sections {
+    display: flex;
+    align-items: center;
+}
+
+.search-dropdown {
+    display: flex;
+    align-items: center;
+}
+
+.header-bottom {
+    background-color: #e0e0e0;
+    /* 下面区域的背景颜色 */
+    padding: 5px;
+}
+
+.search-bar {
+    margin-right: 10px;
+}
+
+.search-button {
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    border-right: 1px solid white;
+}
+
+.input-group {
+    background-color: rgb(94, 97, 101);
+}
+
+.form-control::placeholder {
+    color: #e0e0e0;
+}
+
+
+/*那五個選項*/
+.column-container {
+    text-align: center;
+    width: 100%;
+}
+
+.column {
+    flex: 1;
+    width: 18%;
+    padding: 1px;
+    border-left: 1px solid #86828287;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    box-sizing: border-box;
+    /* 讓padding不會增加元素尺寸 */
+    display: inline-block;
+    /* 讓欄位和下拉選單在同一行上 */
+}
+
+.column:hover {
+    background-color: rgba(169, 172, 174, 0.756);
+}
+
+/*下拉選單*/
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    width: 100%;
+    /* 讓下拉選單寬度與欄位相同 */
+    left: 0;
+    /* 對齊左邊緣 */
+    top: 100%;
+    /* 從欄位底部開始 */
+}
+
+.column:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
