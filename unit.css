@@ -38,6 +38,11 @@ main {
     padding: 20px;
 }
 
+.no-record {
+    display: flex;
+    align-items: center;
+}
+
 #unit-result {
     /* width: 80%; */
     text-align: center;

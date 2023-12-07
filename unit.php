@@ -25,7 +25,15 @@
                 style="background: url('resource/ham.png') no-repeat center center; background-size: contain; height: 35px; width: 35px;"></button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li><a class="dropdown-item" href="#">編輯</a></li>
-                <li><a class="dropdown-item" href="#">刪除</a></li>
+                <!-- <li><a class="dropdown-item" href="index.php?unit="> </a></li> -->
+                <?php
+                    $URL = $_SERVER['REQUEST_URI'];
+                    $parts = explode('?', $URL);
+                    $parts = explode('=', $parts[1]);
+                    $part = urldecode($parts[1]);
+    
+                    echo  "<a class='dropdown-item' class='link' href='index.php?unit=".$part."'>刪除</a>";
+                ?>
             </ul>
         </div>
 
@@ -63,7 +71,7 @@
                     echo  "<br><div id='unit-result' class='row mt-3'><a class='dropdown-item' href='department.php?department=" . $row["DName"] . "'>". $row["DName"]." 地點: ". $row["DLocation"]. " " . " 電話: " . $row["DPhone"] . "</a><br>";
                 }
             } else {
-                echo "暫無資料";
+                echo "<br><div id='unit-result' class='row mt-3 dropdown-item'>暫無資料<br>";
             }
         ?>
     </main>

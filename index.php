@@ -31,6 +31,20 @@
         }
     </script>
     <header>
+        <?php
+        $URL = $_SERVER['REQUEST_URI'];
+        if (str_contains($URL, '?')) {
+            $parts = explode('?', $URL);
+            $parts = explode('=', $parts[1]);
+            $part = urldecode($parts[1]);
+            require_once 'dbconnect.php';
+            $datas = array();
+            $sql = "DELETE FROM unit WHERE `unit`.`UName` = '$part'";
+            $result = mysqli_query($link,$sql);
+            mysqli_close($link); 
+            header("Refresh:0; index.php");
+        }
+        ?>
         <div class="header-top">
             <div class="logo">
                 <img src="resource/logo.png" alt="海大logo" width="75%">
@@ -210,56 +224,27 @@
                                 <button type="button" class="btn btn-secondary" onclick="showUnitForm()">單位</button>
                                 <button type="button" class="btn btn-secondary" onclick="showDepartmentForm()">部門</button>
                                 <button type="button" class="btn btn-secondary" onclick="showEmployeeForm()">員工</button>
-                                <?php
-                                    // 控制表单
-                                    // 根据 URL 中的参数显示相应的表单
-                                    if (isset($_GET['form'])) {
-                                        $form = $_GET['form'];
-
-                                        // 根据参数值决定显示哪个表单
-                                        if ($form === 'unit') {
-                                            echo "<script> showUnitForm(); </script>";
-                                        } elseif ($form === 'department') {
-                                            echo "<script> showDepartmentForm(); </script>";
-                                        } elseif ($form === 'employee') {
-                                            echo "<script> showEmployeeForm(); </script>";
-                                        }
-                                    }
-                                ?>
                             </div>
                         </div>    
                         <div class="form-container mt-3">
-                            <form id="unit-form" style="display: none;">
-                                <div class="mb-3">
-                                    <label for="UId" class="form-label">UId</label>
-                                    <input type="text" class="form-control" id="UId" placeholder="UId">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="UName" class="form-label">UName</label>
-                                    <input type="text" class="form-control" id="UName" placeholder="UName">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="Category" class="form-label">Category</label>
-                                    <input type="text" class="form-control" id="Category" placeholder="Category">
-                                </div>
-                            </form>
-                            <form id="department-form" style="display: none;">
-                                <div class="mb-3">
-                                    <label for="DName" class="form-label">DName</label>
-                                    <input type="text" class="form-control" id="DName" placeholder="DName">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="DLocation" class="form-label">DLocation</label>
-                                    <input type="text" class="form-control" id="DLocation" placeholder="DLocation">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="DPhone" class="form-label">DPhone</label>
-                                    <input type="text" class="form-control" id="DPhone" placeholder="DPhone">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="DNet" class="form-label">DNet</label>
-                                    <input type="text" class="form-control" id="DNet" placeholder="DNet">
-                                </div>
+                            <form id="department-form" style="display: none;" action="insertDepartment.php" method="POST">
+                                <label for="DId">部門ID:</label><br>
+                                <input type="text" id="DId" name="DId"><br>
+                                <label for="DName">部門名稱:</label><br>
+                                <input type="text" id="DName" name="DName"><br>
+                                <label for="DLocation">位置:</label><br>
+                                <input type="text" id="DLocation" name="DLocation"><br>
+                                <label for="DPhone">電話:</label><br>
+                                <input type="text" id="DPhone" name="DPhone"><br>
+                                <label for="DNet">網站:</label><br>
+                                <input type="text" id="DNet" name="DNet"><br>
+                                <label for="DEmail">e-mail:</label><br>
+                                <input type="text" id="DEmail" name="DEmail"><br>
+                                <label for="DFax">傳真:</label><br>
+                                <input type="text" id="DFax" name="DFax"><br>
+                                <label for="UName">所屬單位:</label><br>
+                                <input type="text" id="UName" name="UName"><br><br>
+                                <input type="submit" value="新增">
                             </form>
                             <form id="employee-form" style="display: none;">
                                 <div class="mb-3">
