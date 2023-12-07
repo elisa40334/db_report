@@ -60,7 +60,7 @@
                     echo  "<br><div id='department-result' class='row mt-3'><a class='dropdown-item' href='employee.php?employee=" . $row["EName"] . "'>". $row["EName"]." 職位: ". $row["position"]. " " . " 電話: " . $row["EPhone"] . "</a><br>";
                 }
             } else {
-                echo "0 results";
+                echo "暫無資料";
             }
         ?>
 

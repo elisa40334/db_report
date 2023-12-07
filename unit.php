@@ -63,7 +63,7 @@
                     echo  "<br><div id='unit-result' class='row mt-3'><a class='dropdown-item' href='department.php?department=" . $row["DName"] . "'>". $row["DName"]." 地點: ". $row["DLocation"]. " " . " 電話: " . $row["DPhone"] . "</a><br>";
                 }
             } else {
-                echo "0 results";
+                echo "暫無資料";
             }
         ?>
     </main>
