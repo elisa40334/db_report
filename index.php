@@ -40,8 +40,8 @@
             require_once 'dbconnect.php';
             $datas = array();
             $sql = "DELETE FROM unit WHERE `unit`.`UName` = '$part'";
-            $result = mysqli_query($link,$sql);
-            mysqli_close($link); 
+            $result = mysqli_query($link, $sql);
+            mysqli_close($link);
             header("Refresh:0; index.php");
         }
         ?>
@@ -49,17 +49,13 @@
             <div class="logo">
                 <img src="resource/logo.png" alt="海大logo" width="75%">
             </div>
-            <div class="combined-sections">
+            <form  class="combined-sections" action="text.php" method="POST">
                 <div class="search-bar">
                     <div class="input-group mb-3">
-                    <nobr><form action="text.php" method="POST">
-                        <input id="search" type="text" class="form-control" placeholder="搜尋..."
-                            style="background-color: rgb(94, 97, 101);" name="search">
-                        <input class="btn btn-secondary search-button" type="submit" id="button-addon2"
-                            style="background: url('resource/magnifier.png') no-repeat center center; background-size: contain;">
-                            <!-- <button class="btn btn-secondary search-button" type="button" id="button-addon2"
-                            style="background: url('resource/magnifier.png') no-repeat center center; background-size: contain; "></button> -->
-                    </form></nobr>
+                        <input type="text" class="form-control" placeholder="搜尋..."
+                            style="background-color: rgb(94, 97, 101)" name="search">
+                        <button class="btn btn-secondary search-button" type="submit" id="button-addon2"
+                            style="background: url('resource/magnifier.png') no-repeat center center; background-size: contain; "></button>
                     </div>
                 </div>
                 <!--hover會跑掉算了css真的好難QQ-->
@@ -67,10 +63,11 @@
                     <button class="btn hamburger" type="button" data-bs-toggle="dropdown" aria-expanded="false"
                         style="background: url('resource/ham.png') no-repeat center center; background-size: contain; height: 35px; width: 35px;"></button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#addModal">新增</button></li>
+                        <li><button type="button" class="dropdown-item" data-bs-toggle="modal"
+                                data-bs-target="#addModal">新增</button></li>
                     </ul>
                 </div>
-            </div>
+            </form >
         </div>
 
         <div class="header-bottom">
@@ -80,18 +77,18 @@
                     <div class="dropdown-content" id="academic">
                         <!-- 動態加入 -->
                         <?php
-                            require_once 'dbconnect.php';
-                            $datas = array();
-                            $sql = "SELECT * FROM unit WHERE category = '學術單位'";
-                            $result = mysqli_query($link,$sql);
+                        require_once 'dbconnect.php';
+                        $datas = array();
+                        $sql = "SELECT * FROM unit WHERE category = '學術單位'";
+                        $result = mysqli_query($link, $sql);
 
-                            if ($result->num_rows > 0) {
-                                while($row = $result->fetch_assoc()) {
-                                    echo  "<a class='link' href='unit.php?unit=" . $row["UName"] . "'>" . $row["UName"] . "</a>";
-                                }
-                            } else {
-                                echo "暫無資料";
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                echo "<a class='link' href='unit.php?unit=" . $row["UName"] . "'>" . $row["UName"] . "</a>";
                             }
+                        } else {
+                            echo "暫無資料";
+                        }
                         ?>
                     </div>
                 </div>
@@ -100,18 +97,18 @@
                     <div class="dropdown-content" id="administrative">
                         <!-- 動態加入 -->
                         <?php
-                            require_once 'dbconnect.php';
-                            $datas = array();
-                            $sql = "SELECT * FROM unit WHERE category = '行政單位'";
-                            $result = mysqli_query($link,$sql);
+                        require_once 'dbconnect.php';
+                        $datas = array();
+                        $sql = "SELECT * FROM unit WHERE category = '行政單位'";
+                        $result = mysqli_query($link, $sql);
 
-                            if ($result->num_rows > 0) {
-                                while($row = $result->fetch_assoc()) {
-                                    echo  "<a class='link' href='unit.php?unit=" . $row["UName"] . "'>" . $row["UName"] . "</a>";
-                                }
-                            } else {
-                                echo "暫無資料";
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                echo "<a class='link' href='unit.php?unit=" . $row["UName"] . "'>" . $row["UName"] . "</a>";
                             }
+                        } else {
+                            echo "暫無資料";
+                        }
                         ?>
                     </div>
                 </div>
@@ -120,18 +117,18 @@
                     <div class="dropdown-content" id="alumni">
                         <!-- 動態加入 -->
                         <?php
-                            require_once 'dbconnect.php';
-                            $datas = array();
-                            $sql = "SELECT * FROM unit WHERE category = '校友公關'";
-                            $result = mysqli_query($link,$sql);
+                        require_once 'dbconnect.php';
+                        $datas = array();
+                        $sql = "SELECT * FROM unit WHERE category = '校友公關'";
+                        $result = mysqli_query($link, $sql);
 
-                            if ($result->num_rows > 0) {
-                                while($row = $result->fetch_assoc()) {
-                                    echo  "<a class='link' href='unit.php?unit=" . $row["UName"] . "'>" . $row["UName"] . "</a>";
-                                }
-                            } else {
-                                echo "暫無資料";
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                echo "<a class='link' href='unit.php?unit=" . $row["UName"] . "'>" . $row["UName"] . "</a>";
                             }
+                        } else {
+                            echo "暫無資料";
+                        }
                         ?>
                     </div>
                 </div>
@@ -140,18 +137,18 @@
                     <div class="dropdown-content" id="research">
                         <!-- 動態加入 -->
                         <?php
-                            require_once 'dbconnect.php';
-                            $datas = array();
-                            $sql = "SELECT * FROM unit WHERE category = '研究中心及其他'";
-                            $result = mysqli_query($link,$sql);
+                        require_once 'dbconnect.php';
+                        $datas = array();
+                        $sql = "SELECT * FROM unit WHERE category = '研究中心及其他'";
+                        $result = mysqli_query($link, $sql);
 
-                            if ($result->num_rows > 0) {
-                                while($row = $result->fetch_assoc()) {
-                                    echo  "<a class='link' href='unit.php?unit=" . $row["UName"] . "'>" . $row["UName"] . "</a>";
-                                }
-                            } else {
-                                echo "暫無資料";
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                echo "<a class='link' href='unit.php?unit=" . $row["UName"] . "'>" . $row["UName"] . "</a>";
                             }
+                        } else {
+                            echo "暫無資料";
+                        }
                         ?>
                     </div>
                 </div>
@@ -160,18 +157,18 @@
                     <div class="dropdown-content" id="matsu">
                         <!-- 動態加入 -->
                         <?php
-                            require_once 'dbconnect.php';
-                            $datas = array();
-                            $sql = "SELECT * FROM unit WHERE category = '馬祖'";
-                            $result = mysqli_query($link,$sql);
+                        require_once 'dbconnect.php';
+                        $datas = array();
+                        $sql = "SELECT * FROM unit WHERE category = '馬祖'";
+                        $result = mysqli_query($link, $sql);
 
-                            if ($result->num_rows > 0) {
-                                while($row = $result->fetch_assoc()) {
-                                    echo  "<a class='link' href='unit.php?unit=" . $row["UName"] . "'>" . $row["UName"] . "</a>";
-                                }
-                            } else {
-                                echo "暫無資料";
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                echo "<a class='link' href='unit.php?unit=" . $row["UName"] . "'>" . $row["UName"] . "</a>";
                             }
+                        } else {
+                            echo "暫無資料";
+                        }
                         ?>
                     </div>
                 </div>
@@ -226,62 +223,124 @@
                         <div style="text-align: center;">
                             <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
                                 <button type="button" class="btn btn-secondary" onclick="showUnitForm()">單位</button>
-                                <button type="button" class="btn btn-secondary" onclick="showDepartmentForm()">部門</button>
+                                <button type="button" class="btn btn-secondary"
+                                    onclick="showDepartmentForm()">部門</button>
                                 <button type="button" class="btn btn-secondary" onclick="showEmployeeForm()">員工</button>
                             </div>
-                        </div>    
+                        </div>
+                        <?php
+                        //控制表單出沒
+                        if (isset($_GET['form'])) {
+                            $form = $_GET['form'];
+                            if ($form === 'unit') {
+                                echo "<script> showUnitForm(); </script>";
+                            } elseif ($form === 'department') {
+                                echo "<script> showDepartmentForm(); </script>";
+                            } elseif ($form === 'employee') {
+                                echo "<script> showEmployeeForm(); </script>";
+                            }
+                        }
+                        ?>
+
                         <div class="form-container mt-3">
-                            <form id="department-form" style="display: none;" action="insertDepartment.php" method="POST">
-                                <label for="DId">部門ID:</label><br>
-                                <input type="text" id="DId" name="DId"><br>
-                                <label for="DName">部門名稱:</label><br>
-                                <input type="text" id="DName" name="DName"><br>
-                                <label for="DLocation">位置:</label><br>
-                                <input type="text" id="DLocation" name="DLocation"><br>
-                                <label for="DPhone">電話:</label><br>
-                                <input type="text" id="DPhone" name="DPhone"><br>
-                                <label for="DNet">網站:</label><br>
-                                <input type="text" id="DNet" name="DNet"><br>
-                                <label for="DEmail">e-mail:</label><br>
-                                <input type="text" id="DEmail" name="DEmail"><br>
-                                <label for="DFax">傳真:</label><br>
-                                <input type="text" id="DFax" name="DFax"><br>
-                                <label for="UName">所屬單位:</label><br>
-                                <input type="text" id="UName" name="UName"><br><br>
-                                <input type="submit" value="新增">
+                            <!--單位-->
+                            <form id="unit-form" style="display: block;" action="insertUnit.php" method="POST">
+                                <div class="mb-3">
+                                    <label for="UId" class="form-label">單位ID：</label>
+                                    <input type="text" class="form-control" id="UId" name="UId">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="UName" class="form-label">單位名稱：</label>
+                                    <input type="text" class="form-control" id="UName" name="UName">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="category" class="form-label">單位種類：</label>
+                                    <input type="text" class="form-control" id="category" name="category">
+                                </div>
+                                <div>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                                    <button type="submit" class="btn btn-primary">確認更新</button>
+                                </div>
                             </form>
-                            <form id="employee-form" style="display: none;">
+
+                            <!--部門-->
+                            <form id="department-form" style="display: none;" action="insertDepartment.php" method="POST">
                                 <div class="mb-3">
-                                    <label for="EId" class="form-label">EId</label>
-                                    <input type="text" class="form-control" id="EId" placeholder="EId">
+                                    <label for="DId" class="form-label">部門ID：</label>
+                                    <input type="text" class="form-control" id="DId" name="DId">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="EName" class="form-label">EName</label>
-                                    <input type="text" class="form-control" id="EName" placeholder="EName">
+                                    <label for="DName" class="form-label">部門名稱：</label>
+                                    <input type="text" class="form-control" id="DName" name="DName">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="EPhone" class="form-label">EPhone</label>
-                                    <input type="text" class="form-control" id="EPhone" placeholder="EPhone">
+                                    <label for="DLocation" class="form-label">位置：</label>
+                                    <input type="text" class="form-control" id="DLocation" name="DLocation">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="Address" class="form-label">Address</label>
-                                    <input type="text" class="form-control" id="Address" placeholder="Address">
+                                    <label for="DPhone" class="form-label">電話：</label>
+                                    <input type="text" class="form-control" id="DPhone" name="DPhone">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="Position" class="form-label">Position</label>
-                                    <input type="text" class="form-control" id="Position" placeholder="Position">
+                                    <label for="DNet" class="form-label">網站：</label>
+                                    <input type="text" class="form-control" id="DNet" name="DNet">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="Salary" class="form-label">Salary</label>
-                                    <input type="text" class="form-control" id="Salary" placeholder="Salary">
+                                    <label for="DEmail" class="form-label">e-mail：</label>
+                                    <input type="text" class="form-control" id="DEmail" name="DEmail">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="E_DName" class="form-label">DName</label>
-                                    <input type="text" class="form-control" id="E_DName" placeholder="E_DName">
+                                    <label for="DFax" class="form-label">傳真：</label>
+                                    <input type="text" class="form-control" id="DFax" name="DFax">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="UName" class="form-label">所屬單位：</label>
+                                    <input type="text" class="form-control" id="UName" name="UName">
+                                </div>
+                                <div>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                                    <button type="submit" class="btn btn-primary">確認更新</button>
+                                </div>
+                            </form>
+
+                            <!--員工-->
+                            <form id="employee-form" style="display: none;" action="insertEmployee.php" method="POST">
+                                <div class="mb-3">
+                                    <label for="EId" class="form-label">員工ID：</label>
+                                    <input type="text" class="form-control" id="EId" name="EId">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="EName" class="form-label">姓名：</label>
+                                    <input type="text" class="form-control" id="EName" name="EName">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="EPhone" class="form-label">聯絡方式：</label>
+                                    <input type="text" class="form-control" id="EPhone" name="EPhone">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="address" class="form-label">地址：</label>
+                                    <input type="text" class="form-control" id="address" name="address">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="position" class="form-label">職位：</label>
+                                    <input type="text" class="form-control" id="position" name="position">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="salary" class="form-label">薪水：</label>
+                                    <input type="text" class="form-control" id="salary" name="salary">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="DName" class="form-label">所屬部門：</label>
+                                    <input type="text" class="form-control" id="DName" name="DName">
+                                </div>
+                                <div>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                                    <button type="submit" class="btn btn-primary">確認更新</button>
                                 </div>
                             </form>
                         </div>
                     </div>
+                    
                 </div>
             </div>
         </div>

@@ -1,14 +1,11 @@
 /* 基本樣式 */
-
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
 }
 
-
 /*固定最上面的東西(往下滑還在)*/
-
 header {
     position: fixed;
     top: 0;
@@ -18,9 +15,7 @@ header {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-
 /*預留位置*/
-
 main {
     margin-top: 150px;
     display: flex;
@@ -28,9 +23,7 @@ main {
     padding: 20px;
 }
 
-
 /*header*/
-
 .header-top {
     display: flex;
     justify-content: space-between;
@@ -73,14 +66,8 @@ main {
     color: #e0e0e0;
 }
 
-form {
-    margin: 0px;
-    display: inline;
-}
-
 
 /*那五個選項*/
-
 .column-container {
     text-align: center;
     width: 100%;
@@ -105,9 +92,7 @@ form {
     background-color: rgba(169, 172, 174, 0.756);
 }
 
-
 /*下拉選單*/
-
 .dropdown-content {
     display: none;
     position: absolute;
