@@ -15,6 +15,20 @@
 
 <body>
     <header>
+        <?php
+        $URL = $_SERVER['REQUEST_URI'];
+        if (str_contains($URL, '?')) {
+            $parts = explode('?', $URL);
+            $parts = explode('=', $parts[1]);
+            $part = urldecode($parts[1]);
+            require_once 'dbconnect.php';
+            $datas = array();
+            $sql = "DELETE FROM employee WHERE `enployee`.`EId` = '$part'";
+            $result = mysqli_query($link,$sql);
+            mysqli_close($link); 
+            header("Refresh:0; unit.php");
+        }
+        ?>
         <div class="logo">
             <img src="resource/logo.png" alt="海大logo" width="75%">
         </div>
@@ -24,7 +38,13 @@
                 style="background: url('resource/ham.png') no-repeat center center; background-size: contain; height: 35px; width: 35px;"></button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li><a class="dropdown-item" href="#">編輯</a></li>
-                <li><a class="dropdown-item" href="#">刪除</a></li>
+                <?php
+                    $URL = $_SERVER['REQUEST_URI'];
+                    $parts = explode('?', $URL);
+                    $parts = explode('=', $parts[1]);
+                    $part = urldecode($parts[1]);
+                    echo  "<a class='dropdown-item' class='link' href='unit.php?unit=".$part."'>刪除</a>";
+                ?>
             </ul>
         </div>
 

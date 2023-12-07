@@ -16,6 +16,20 @@
 
 <body>
     <header>
+        <?php
+        $URL = $_SERVER['REQUEST_URI'];
+        if (str_contains($URL, '?')) {
+            $parts = explode('?', $URL);
+            $parts = explode('=', $parts[1]);
+            $part = urldecode($parts[1]);
+            require_once 'dbconnect.php';
+            $datas = array();
+            $sql = "DELETE FROM department WHERE `department`.`DName` = '$part'";
+            $result = mysqli_query($link,$sql);
+            mysqli_close($link); 
+            header("Refresh:0; unit.php");
+        }
+        ?>
         <div class="logo">
             <img src="resource/logo.png" alt="海大logo" width="75%">
         </div>
