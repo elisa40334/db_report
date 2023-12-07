@@ -11,6 +11,25 @@
 </head>
 
 <body>
+    <script>
+        function showUnitForm() {
+            document.getElementById('unit-form').style.display = 'block';
+            document.getElementById('department-form').style.display = 'none';
+            document.getElementById('employee-form').style.display = 'none';
+        }
+
+        function showDepartmentForm() {
+            document.getElementById('unit-form').style.display = 'none';
+            document.getElementById('department-form').style.display = 'block';
+            document.getElementById('employee-form').style.display = 'none';
+        }
+
+        function showEmployeeForm() {
+            document.getElementById('unit-form').style.display = 'none';
+            document.getElementById('department-form').style.display = 'none';
+            document.getElementById('employee-form').style.display = 'block';
+        }
+    </script>
     <header>
         <div class="header-top">
             <div class="logo">
@@ -191,6 +210,22 @@
                                 <button type="button" class="btn btn-secondary" onclick="showUnitForm()">單位</button>
                                 <button type="button" class="btn btn-secondary" onclick="showDepartmentForm()">部門</button>
                                 <button type="button" class="btn btn-secondary" onclick="showEmployeeForm()">員工</button>
+                                <?php
+                                    // 控制表单
+                                    // 根据 URL 中的参数显示相应的表单
+                                    if (isset($_GET['form'])) {
+                                        $form = $_GET['form'];
+
+                                        // 根据参数值决定显示哪个表单
+                                        if ($form === 'unit') {
+                                            echo "<script> showUnitForm(); </script>";
+                                        } elseif ($form === 'department') {
+                                            echo "<script> showDepartmentForm(); </script>";
+                                        } elseif ($form === 'employee') {
+                                            echo "<script> showEmployeeForm(); </script>";
+                                        }
+                                    }
+                                ?>
                             </div>
                         </div>    
                         <div class="form-container mt-3">
