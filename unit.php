@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="zh-TW">
 
 <head>
@@ -42,12 +42,17 @@
         寫PHP 動態生成card -->
 
         <?php
+            $URL = $_SERVER['REQUEST_URI'];
+            $parts = explode('?', $URL);
+            $parts = explode('=', $parts[1]);
+            $part = urldecode($parts[1]);
+
             // 載入db.php來連結資料庫
             require_once 'dbconnect.php';
             // 設置一個空陣列來放資料
             $datas = array();
             // sql語法存在變數中
-            $sql = "SELECT * FROM department WHERE UName = '電機資訊學院'";
+            $sql = "SELECT * FROM department WHERE UName = '$part'";
 
             // 用mysqli_query方法執行(sql語法)將結果存在變數中
             $result = mysqli_query($link,$sql);
