@@ -53,7 +53,7 @@
                 <div class="search-bar">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="搜尋..."
-                            style="background-color: rgb(94, 97, 101)">
+                            style="background-color: rgb(94, 97, 101)" name="search">
                         <button class="btn btn-secondary search-button" type="submit" id="button-addon2"
                             style="background: url('resource/magnifier.png') no-repeat center center; background-size: contain; "></button>
                     </div>
