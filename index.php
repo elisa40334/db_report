@@ -49,7 +49,7 @@
             <div class="logo">
                 <img src="resource/logo.png" alt="海大logo" width="75%">
             </div>
-            <div class="combined-sections">
+            <form  class="combined-sections" action="text.php" method="POST">
                 <div class="search-bar">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="搜尋..."
@@ -67,7 +67,7 @@
                                 data-bs-target="#addModal">新增</button></li>
                     </ul>
                 </div>
-            </div>
+            </form >
         </div>
 
         <div class="header-bottom">
