@@ -17,16 +17,16 @@
     <header>
         <?php
         $URL = $_SERVER['REQUEST_URI'];
-        if (str_contains($URL, '?')) {
+        if (str_contains($URL, '=!')) {
             $parts = explode('?', $URL);
-            $parts = explode('=', $parts[1]);
+            $parts = explode('=!', $parts[1]);
             $part = urldecode($parts[1]);
             require_once 'dbconnect.php';
             $datas = array();
             $sql = "DELETE FROM employee WHERE `enployee`.`EId` = '$part'";
             $result = mysqli_query($link,$sql);
             mysqli_close($link); 
-            header("Refresh:0; unit.php");
+            header("Refresh:0; index.php");
         }
         ?>
         <div class="logo">
@@ -43,7 +43,7 @@
                     $parts = explode('?', $URL);
                     $parts = explode('=', $parts[1]);
                     $part = urldecode($parts[1]);
-                    echo  "<a class='dropdown-item' class='link' href='unit.php?unit=".$part."'>刪除</a>";
+                    echo  "<a class='dropdown-item' class='link' href='unit.php?unit=!".$part."'>刪除</a>";
                 ?>
             </ul>
         </div>
