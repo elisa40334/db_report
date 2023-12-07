@@ -52,10 +52,14 @@
             <div class="combined-sections">
                 <div class="search-bar">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="搜尋..."
-                            style="background-color: rgb(94, 97, 101)">
-                        <button class="btn btn-secondary search-button" type="button" id="button-addon2"
-                            style="background: url('resource/magnifier.png') no-repeat center center; background-size: contain; "></button>
+                    <nobr><form action="text.php" method="POST">
+                        <input id="search" type="text" class="form-control" placeholder="搜尋..."
+                            style="background-color: rgb(94, 97, 101);" name="search">
+                        <input class="btn btn-secondary search-button" type="submit" id="button-addon2"
+                            style="background: url('resource/magnifier.png') no-repeat center center; background-size: contain;">
+                            <!-- <button class="btn btn-secondary search-button" type="button" id="button-addon2"
+                            style="background: url('resource/magnifier.png') no-repeat center center; background-size: contain; "></button> -->
+                    </form></nobr>
                     </div>
                 </div>
                 <!--hover會跑掉算了css真的好難QQ-->
