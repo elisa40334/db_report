@@ -37,6 +37,33 @@
         <div id="department-result" class="row mt-3"></div>
         <!--寫PHP 動態生成card-->
 
+        <?php
+            $URL = $_SERVER['REQUEST_URI'];
+            $parts = explode('?', $URL);
+            $parts = explode('=', $parts[1]);
+            $part = urldecode($parts[1]);
+
+            // 載入db.php來連結資料庫
+            require_once 'dbconnect.php';
+            // 設置一個空陣列來放資料
+            $datas = array();
+            // sql語法存在變數中
+            $sql = "SELECT * FROM employee WHERE DName = '$part'";
+            // echo $part;
+
+            // 用mysqli_query方法執行(sql語法)將結果存在變數中
+            $result = mysqli_query($link,$sql);
+
+            if ($result->num_rows > 0) {
+                // output data of each row
+                while($row = $result->fetch_assoc()) {
+                    echo  "<br><div id='department-result' class='row mt-3'><a class='dropdown-item' href='employee.php?employee=" . $row["EName"] . "'>". $row["EName"]." 職位: ". $row["position"]. " " . " 電話: " . $row["EPhone"] . "</a><br>";
+                }
+            } else {
+                echo "0 results";
+            }
+        ?>
+
     </main>
 
 </body>
