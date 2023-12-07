@@ -51,13 +51,15 @@
     </header>
 
     <main>
+
+        <!--抓單位名字放最上面-->
         <?php
             $URL = $_SERVER['REQUEST_URI'];
             $parts = explode('?', $URL);
             $parts = explode('=', $parts[1]);
             $part = urldecode($parts[1]);
 
-            echo "<div id='department-name'>".$part."</div>";
+            echo "<div id='department-name style='font-size: 100px;'>".$part."</div>";
         ?>
         <div id="department-name" ></div>
         <!--動態生成card放的區塊-->
