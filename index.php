@@ -4,12 +4,6 @@
 <!--RWD好難 我放棄QQ-->
 
 <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
-        crossorigin="anonymous"></script>
-    <!--引用bootstrap-->
     <meta charset="UTF-8">
     <title>海大教職員資訊查詢系統</title>
     <link rel="stylesheet" href="index.css">
@@ -36,7 +30,7 @@
                     <button class="btn hamburger" type="button" data-bs-toggle="dropdown" aria-expanded="false"
                         style="background: url('resource/ham.png') no-repeat center center; background-size: contain; height: 35px; width: 35px;"></button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="#">新增</a></li>
+                        <li><button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#addModal">新增</button></li>
                     </ul>
                 </div>
             </div>
@@ -121,7 +115,99 @@
                 </button>
             </div>
         </div>
+
+
+        <!-- 懸浮視窗 -->
+        <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addModalLabel">新增資料</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div style="text-align: center;">
+                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                <button type="button" class="btn btn-secondary" onclick="showUnitForm()">單位</button>
+                                <button type="button" class="btn btn-secondary" onclick="showDepartmentForm()">部門</button>
+                                <button type="button" class="btn btn-secondary" onclick="showEmployeeForm()">員工</button>
+                            </div>
+                        </div>    
+                        <div class="form-container mt-3">
+                            <form id="unit-form" style="display: none;">
+                                <div class="mb-3">
+                                    <label for="UId" class="form-label">UId</label>
+                                    <input type="text" class="form-control" id="UId" placeholder="UId">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="UName" class="form-label">UName</label>
+                                    <input type="text" class="form-control" id="UName" placeholder="UName">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="Category" class="form-label">Category</label>
+                                    <input type="text" class="form-control" id="Category" placeholder="Category">
+                                </div>
+                            </form>
+                            <form id="department-form" style="display: none;">
+                                <div class="mb-3">
+                                    <label for="DName" class="form-label">DName</label>
+                                    <input type="text" class="form-control" id="DName" placeholder="DName">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="DLocation" class="form-label">DLocation</label>
+                                    <input type="text" class="form-control" id="DLocation" placeholder="DLocation">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="DPhone" class="form-label">DPhone</label>
+                                    <input type="text" class="form-control" id="DPhone" placeholder="DPhone">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="DNet" class="form-label">DNet</label>
+                                    <input type="text" class="form-control" id="DNet" placeholder="DNet">
+                                </div>
+                            </form>
+                            <form id="employee-form" style="display: none;">
+                                <div class="mb-3">
+                                    <label for="EId" class="form-label">EId</label>
+                                    <input type="text" class="form-control" id="EId" placeholder="EId">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="EName" class="form-label">EName</label>
+                                    <input type="text" class="form-control" id="EName" placeholder="EName">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="EPhone" class="form-label">EPhone</label>
+                                    <input type="text" class="form-control" id="EPhone" placeholder="EPhone">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="Address" class="form-label">Address</label>
+                                    <input type="text" class="form-control" id="Address" placeholder="Address">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="Position" class="form-label">Position</label>
+                                    <input type="text" class="form-control" id="Position" placeholder="Position">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="Salary" class="form-label">Salary</label>
+                                    <input type="text" class="form-control" id="Salary" placeholder="Salary">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="E_DName" class="form-label">DName</label>
+                                    <input type="text" class="form-control" id="E_DName" placeholder="E_DName">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+        crossorigin="anonymous"></script>
+    <!--引用bootstrap-->
 </body>
 
 </html>
