@@ -51,8 +51,15 @@
     </header>
 
     <main>
-        <!--抓單位名字放最上面-->
-        <div id="department-name"></div>
+        <?php
+            $URL = $_SERVER['REQUEST_URI'];
+            $parts = explode('?', $URL);
+            $parts = explode('=', $parts[1]);
+            $part = urldecode($parts[1]);
+
+            echo "<div id='department-name'>".$part."</div>";
+        ?>
+        <div id="department-name" ></div>
         <!--動態生成card放的區塊-->
         <div id="department-result" class="row mt-3"></div>
         <!--寫PHP 動態生成card-->
