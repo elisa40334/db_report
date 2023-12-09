@@ -84,23 +84,69 @@
                 </tr>
                 <tr>
                     <th>電話</th>
-                    <td colspan="2"><?php echo $row['EPhone']; ?></td>
+                    <td colspan="2">
+                        <?php
+                            if(empty($row['EPhone'])){
+                                echo "暫無資料";
+                            }
+                            else{
+                                echo $row['EPhone'];
+                            }
+                        ?>
+                    </td>
                 </tr>
                 <tr>
                     <th>地址</th>
-                    <td colspan="2"><?php echo $row['address']; ?></td>
+                    <td colspan="2">
+                        <?php
+                            if(empty($row['address'])){
+                                echo "暫無資料";
+                            }
+                            else{
+                                echo $row['address'];
+                            }
+                        ?>
+                    </td>
                 </tr>
                 <tr>
                     <th>職位</th>
-                    <td colspan="2"><?php echo $row['position']; ?></td>
+                    <td colspan="2">
+                    <?php
+                            if(empty($row['position'])){
+                                echo "暫無資料";
+                            }
+                            else{
+                                echo $row['position'];
+                            }
+                    ?>
+                
+                    </td>
                 </tr>
                 <tr>
                     <th>薪水</th>
-                    <td colspan="2"><?php echo $row['salary']; ?></td>
+                    <td colspan="2">
+                        <?php
+                            if(empty($row['salary'])){
+                                echo "暫無資料";
+                            }
+                            else{
+                                echo $row['salary'];
+                            }
+                        ?>
+                    </td>
                 </tr>
                 <tr>
                     <th>所屬部門</th>
-                    <td colspan="2"><?php echo $row['DName']; ?></td>
+                    <td colspan="2">
+                        <?php
+                            if(empty($row['DName'])){
+                                echo "暫無資料";
+                            }
+                            else{
+                                echo $row['DName'];
+                            }
+                        ?>
+                    </td>
                 </tr>
                 <?php
 				        }
