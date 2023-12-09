@@ -17,7 +17,7 @@
             $part = urldecode($parts[1]);
             require_once 'dbconnect.php';
             $datas = array();
-            $sql = "DELETE FROM employee WHERE `enployee`.`EId` = '$part'";
+            $sql = "DELETE FROM employee WHERE `employee`.`EId` = '$part'";
             $result = mysqli_query($link, $sql);
             mysqli_close($link);
             header("Refresh:0; index.php");
