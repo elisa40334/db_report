@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
-
+<?php
+    include('dbconnect.php');  //這是引入剛剛寫完，用來連線的.php
+?>
 <head>
     <meta charset="UTF-8">
     <title>員工資料介面</title>
@@ -51,38 +53,60 @@
         <!--資料表格-->
         <div class="employee-data">
             <table>
+                <?php
+                
+                    $URL = $_SERVER['REQUEST_URI'];
+                    $parts = explode('=', $URL);
+                    $part = urldecode($parts[1]);//取網址中的EName
+
+                    // sql語法存在變數中
+                    $query = "SELECT *FROM employee WHERE EName = '$part'"; //搜尋*(全部欄位) ，從表employee
+                    // 用mysqli_query方法執行(sql語法)將結果存在變數中
+                    $result = mysqli_query($link,$query);
+                    
+                    if ($result->num_rows > 0) {
+                        // output data of each row
+                        while ($row = $result->fetch_assoc()) {
+                ?>
                 <tr>
                     <th>員工編號</th>
-                    <td style="width: 70%;">自己加</td>
+                    <td style="width: 70%;"><?php echo $row['EId']; ?></td>
                     <td rowspan="2" style="width: 30%;  border-left: 2px solid white;padding: 5px;">
                         <img src="https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/2023/10/05/0/25837663.jpg&s=Y&x=0&y=0&sw=1280&sh=853&sl=W&fw=1050"
                             alt="Employee Photo" width=150px;>
                     </td>
+                
                 </tr>
+                
                 <tr>
                     <th>姓名</th>
-                    <td style="width: 70%;">自己加</td>
+                    <td style="width: 70%;"> <?php echo $row['EName']; ?></td>
                 </tr>
                 <tr>
                     <th>電話</th>
-                    <td colspan="2">自己加</td>
+                    <td colspan="2"><?php echo $row['EPhone']; ?></td>
                 </tr>
                 <tr>
                     <th>地址</th>
-                    <td colspan="2">自己加</td>
+                    <td colspan="2"><?php echo $row['address']; ?></td>
                 </tr>
                 <tr>
                     <th>職位</th>
-                    <td colspan="2">自己加</td>
+                    <td colspan="2"><?php echo $row['position']; ?></td>
                 </tr>
                 <tr>
                     <th>薪水</th>
-                    <td colspan="2">自己加</td>
+                    <td colspan="2"><?php echo $row['salary']; ?></td>
                 </tr>
                 <tr>
                     <th>所屬部門</th>
-                    <td colspan="2">自己加</td>
+                    <td colspan="2"><?php echo $row['DName']; ?></td>
                 </tr>
+                <?php
+				        }
+                    }
+                    
+			    ?>
             </table>
 
         </div>
