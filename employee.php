@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="zh-TW">
 <?php
     include('dbconnect.php');  //這是引入剛剛寫完，用來連線的.php
@@ -54,16 +55,13 @@
         <div class="employee-data">
             <table>
                 <?php
-                
                     $URL = $_SERVER['REQUEST_URI'];
                     $parts = explode('=', $URL);
                     $part = urldecode($parts[1]);//取網址中的EName
-
                     // sql語法存在變數中
                     $query = "SELECT *FROM employee WHERE EName = '$part'"; //搜尋*(全部欄位) ，從表employee
                     // 用mysqli_query方法執行(sql語法)將結果存在變數中
                     $result = mysqli_query($link,$query);
-                    
                     if ($result->num_rows > 0) {
                         // output data of each row
                         while ($row = $result->fetch_assoc()) {
@@ -75,9 +73,7 @@
                         <img src="https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/2023/10/05/0/25837663.jpg&s=Y&x=0&y=0&sw=1280&sh=853&sl=W&fw=1050"
                             alt="Employee Photo" width=150px;>
                     </td>
-                
                 </tr>
-                
                 <tr>
                     <th>姓名</th>
                     <td style="width: 70%;"> <?php echo $row['EName']; ?></td>
@@ -112,14 +108,13 @@
                     <th>職位</th>
                     <td colspan="2">
                     <?php
-                            if(empty($row['position'])){
-                                echo "暫無資料";
-                            }
-                            else{
-                                echo $row['position'];
-                            }
+                        if(empty($row['position'])){
+                            echo "暫無資料";
+                        }
+                        else{
+                            echo $row['position'];
+                        }
                     ?>
-                
                     </td>
                 </tr>
                 <tr>
@@ -149,15 +144,15 @@
                     </td>
                 </tr>
                 <?php
-				        }
-                    }
-                    
+				    }
+                } 
 			    ?>
             </table>
-
         </div>
         <!-- 懸浮視窗 -->
+        
         <div class="modal fade" id="modifyModal" tabindex="-1" aria-labelledby="modifyModalLabel" aria-hidden="true">
+                
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -170,30 +165,84 @@
                                 <div class="mb-3">
                                     <label for="EId" class="form-label">員工ID：</label>
                                     <input type="text" class="form-control" id="EId" name="EId">
+                                    <?php
+                                        if(empty($EId = @$_GET["EId"])){}
+                                        else{
+                                            
+                                            $EId = @$_POST["EId"];
+                                            require_once 'dbconnect.php';
+                                            
+                                            //print "$EId";
+                                            $sql = "UPDATE employee SET EID = $EId WHERE EName = '$part'";
+                                            echo $part;
+                                            $result = mysqli_query($link,$sql);
+                                            // 如果有異動到資料庫數量(更新資料庫)
+                                            if (mysqli_affected_rows($link)>0) {
+                                                echo "資料已更新";
+                                            }
+                                            elseif(mysqli_affected_rows($link)==0) {
+                                                echo "無資料更新";
+                                            }
+                                            else {
+                                                echo "{$sql} 語法執行失敗，錯誤訊息: " . mysqli_error($link);
+                                            }
+                                            mysqli_close($link); 
+                                        }
+                                    ?>
                                 </div>
                                 <div class="mb-3">
                                     <label for="EName" class="form-label">姓名：</label>
                                     <input type="text" class="form-control" id="EName" name="EName">
+                                    <?php
+                                        $EName = @$_GET['EName'];
+                                        $sql = "UPDATE 'employee' SET EName = $EName WHERE EName = '$part'";
+                                        
+                                    ?>
                                 </div>
                                 <div class="mb-3">
                                     <label for="EPhone" class="form-label">聯絡方式：</label>
                                     <input type="text" class="form-control" id="EPhone" name="EPhone">
+                                    <?php
+                                        $EPhone = @$_GET['EPhone'];
+                                        $sql = "UPDATE 'employee' SET EPhone = $EPhone WHERE EName = '$part'";
+                                        
+                                    ?>
                                 </div>
                                 <div class="mb-3">
                                     <label for="address" class="form-label">地址：</label>
                                     <input type="text" class="form-control" id="address" name="address">
+                                    <?php
+                                        $address = @$_GET['address'];
+                                        $sql = "UPDATE 'employee' SET address = $address WHERE EName = '$part'";
+                                        
+                                    ?>
                                 </div>
                                 <div class="mb-3">
                                     <label for="position" class="form-label">職位：</label>
                                     <input type="text" class="form-control" id="position" name="position">
+                                    <?php
+                                        $position = @$_GET['position'];
+                                        $sql = "UPDATE 'employee' SET position = $position WHERE EName = '$part'";
+                                        
+                                    ?>
                                 </div>
                                 <div class="mb-3">
                                     <label for="salary" class="form-label">薪水：</label>
                                     <input type="text" class="form-control" id="salary" name="salary">
+                                    <?php
+                                        $salary = @$_GET['salary'];
+                                        $sql = "UPDATE 'employee' SET salary = $salary WHERE EName = '$part'";
+                                        
+                                    ?>
                                 </div>
                                 <div class="mb-3">
                                     <label for="DName" class="form-label">所屬部門：</label>
                                     <input type="text" class="form-control" id="DName" name="DName">
+                                    <?php
+                                        $DName = @$_GET['DName'];
+                                        $sql = "UPDATE 'employee' SET DName = $DName WHERE EName = '$part'";
+                                        
+                                    ?>
                                 </div>
                                 <div style="text-align: center;">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
