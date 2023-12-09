@@ -195,14 +195,12 @@
                                     <label for="EId" class="form-label">員工ID：</label>
                                     <input type="text" class="form-control" id="EId" name="EId" placeholder='<?php echo $EId?>'/>
                                     <?php
-                                        echo @$_POST["EId"];
-                                        if(empty(@$_POST["EId"])){        
-                                            $Id=$EId;
-                                        }
-                                        else{
-                                            $Id=$_POST['EId'];
-                                            $query = "UPDATE 'employee' SET EId = '$Id' WHERE EId = '$EId'";
-                                            $result = mysqli_query($query);
+                                        //print empty(@$_POST["EId"]);
+                                        print $EId;
+                                        print (empty(@$_POST["EId"]));
+                                        if(empty(@$_POST["EId"])){
+                                            @$_POST["EId"]=$EId;
+                                            //setcookie('mycookie',$EId);//mycookie存沒有編輯的資料
                                         }
                                     ?>
                                 </div>
