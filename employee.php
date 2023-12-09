@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <?php
     $URL = $_SERVER['REQUEST_URI'];
@@ -70,6 +69,7 @@
                     $result = mysqli_query($link,$query);
                     if ($result->num_rows > 0) {
                         // output data of each row
+                        global $row;
                         while ($row = $result->fetch_assoc()) {
                 ?>
                 <tr>
@@ -190,12 +190,13 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-container mt-3">
-                            <form id="employee-form">
+                            <form id="employee-form" action="edit.php" method="post">
                                 <div class="mb-3">
                                     <label for="EId" class="form-label">員工ID：</label>
-                                    <input type="text" class="form-control" id="EId" name="EId" method="post"placeholder='<?php echo $EId?>'/>
+                                    <input type="text" class="form-control" id="EId" name="EId" placeholder='<?php echo $EId?>'/>
                                     <?php
-                                        if(empty($Id = $_POST['EId'])){
+                                        echo @$_POST["EId"];
+                                        if(empty(@$_POST["EId"])){        
                                             $Id=$EId;
                                         }
                                         else{
@@ -203,7 +204,6 @@
                                             $query = "UPDATE 'employee' SET EId = '$Id' WHERE EId = '$EId'";
                                             $result = mysqli_query($query);
                                         }
-                                        
                                     ?>
                                 </div>
                                 <div class="mb-3">
