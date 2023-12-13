@@ -1,7 +1,8 @@
 /* 基本樣式 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200&display=swap');
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Noto Serif TC', serif;
     margin: 0;
     padding: 0;
 }
@@ -10,6 +11,7 @@ body {
 /*固定最上面的東西(往下滑還在)*/
 
 header {
+    font-family: 'Noto Serif TC', serif;
     position: fixed;
     top: 0;
     width: 100%;

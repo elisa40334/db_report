@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <title>單位</title>
     <link rel="stylesheet" href="unit.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -23,8 +26,15 @@
             header("Refresh:0; index.php");
         }
         ?>
-        <div class="logo">
-            <img src="resource/logo.png" alt="海大logo" width="75%">
+        <div>
+            <?php
+            $URL = $_SERVER['REQUEST_URI'];
+            $parts = explode('?', $URL);
+            $parts = explode('=', $parts[1]);
+            $part = urldecode($parts[1]);
+
+            echo "<div id='unit-name' style=' font-style:italic; font-size: 40px; color: white;'>" . $part . "</div>";
+            ?>
         </div>
         <!--hover會跑掉算了css真的好難QQ-->
         <div class="dropdown">
@@ -50,15 +60,7 @@
 
 
         <!--抓單位名字放最上面-->
-        <?php
-            $URL = $_SERVER['REQUEST_URI'];
-            $parts = explode('?', $URL);
-            $parts = explode('=', $parts[1]);
-            $part = urldecode($parts[1]);
 
-            echo "<div id='unit-name' style='font-size: 100px;'>".$part."</div>";
-        ?>
-        <div id="unit-name"></div>
 
         <?php
         $URL = $_SERVER['REQUEST_URI'];
@@ -121,6 +123,7 @@
             </div>
         </div>
     </main>
+    <link href="https://fonts.googleapis.com/earlyaccess/cwtexfangsong.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"

@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <title>部門</title>
     <link rel="stylesheet" href="department.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -23,8 +26,15 @@
             header("Refresh:0; index.php");
         }
         ?>
-        <div class="logo">
-            <img src="resource/logo.png" alt="海大logo" width="75%">
+        <div>
+            <?php
+            $URL = $_SERVER['REQUEST_URI'];
+            $parts = explode('?', $URL);
+            $parts = explode('=', $parts[1]);
+            $part = urldecode($parts[1]);
+            //抓單位名字放最上面/
+            echo "<div id='department-name' style='font-style:italic; font-size: 40px; color: white;'>" . $part . "</div>";
+            ?>
         </div>
         <!--hover會跑掉算了css真的好難QQ-->
         <div class="dropdown">
@@ -52,8 +62,7 @@
         $parts = explode('?', $URL);
         $parts = explode('=', $parts[1]);
         $part = urldecode($parts[1]);
-        //抓單位名字放最上面/
-        echo "<div id='department-name style='font-size: 100px;'>".$part."</div>";
+
         // 載入db.php來連結資料庫
         require_once 'dbconnect.php';
         // 設置一個空陣列來放資料
