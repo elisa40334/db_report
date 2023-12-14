@@ -9,38 +9,19 @@
 
 <body>
     <header>
-        <?php
-        $URL = $_SERVER['REQUEST_URI'];
-        if (str_contains($URL, '=!')) {
+        <div>
+            <?php
+            $URL = $_SERVER['REQUEST_URI'];
             $parts = explode('?', $URL);
-            $parts = explode('=!', $parts[1]);
+            $parts = explode('=', $parts[1]);
             $part = urldecode($parts[1]);
-            require_once 'dbconnect.php';
-            $datas = array();
-            $sql = "DELETE FROM employee WHERE `enployee`.`EId` = '$part'";
-            $result = mysqli_query($link,$sql);
-            mysqli_close($link); 
-            header("Refresh:0; index.php");
-        }
-        ?>
-        <div class="logo">
-            <img src="resource/logo.png" alt="海大logo" width="75%">
+            $part = iconv('UTF-8', 'ISO-8859-1//IGNORE', $part);
+            //抓單位名字放最上面/
+            echo "<div id='department-name' style='font-style:italic; font-size: 40px; color: white;'>以下是‘" . $part . "’的搜尋結果</div>";
+            ?>
         </div>
+        
         <!--hover會跑掉算了css真的好難QQ-->
-        <div class="dropdown">
-            <button class="btn hamburger" type="button" data-bs-toggle="dropdown" aria-expanded="false"
-                style="background: url('resource/ham.png') no-repeat center center; background-size: contain; height: 35px; width: 35px;"></button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" href="#">編輯</a></li>
-                <?php
-                    $URL = $_SERVER['REQUEST_URI'];
-                    $parts = explode('?', $URL);
-                    $parts = explode('=', $parts[1]);
-                    $part = urldecode($parts[1]);
-                    echo  "<a class='dropdown-item' class='link' href='unit.php?unit=!".$part."'>刪除</a>";
-                ?>
-            </ul>
-        </div>
 
     </header>
 
@@ -64,14 +45,14 @@
                 $result = mysqli_query($link,$sql);
                 if ($result->num_rows > 0) {
                     // output data of each row
-                    while($row = $result->fetch_assoc()) {
-                        echo  "<br><div id='department-result' class='row mt-3'><a class='dropdown-item' href='employee.php?employee=" . $row["EName"] . "'>". $row["EName"]." 職位: ". $row["position"]. " " . " 電話: " . $row["EPhone"] . "</a><br>";
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<br><div id='department-result'><a class='dropdown-item' href='employee.php?employee=" . $row["EName"] . "'>" . $row["EName"] . " 職位: " . $row["position"] . " " . " 電話: " . $row["EPhone"] . "</a><br>";
                     }
                 } else {
-                    echo "暫無資料";
+                    echo "<br><div id='department-result' dropdown-item'>暫無資料<br>";
                 }
             } else {
-                echo "<br><div id='department-result' dropdown-item'>暫無資料<br>";
+                echo "<br><div id='department-result'>暫無資料<br>";
             }
 
             
