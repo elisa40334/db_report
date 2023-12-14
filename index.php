@@ -139,7 +139,7 @@
                         <?php
                         require_once 'dbconnect.php';
                         $datas = array();
-                        $sql = "SELECT * FROM unit WHERE category = '研究中心及其他'";
+                        $sql = "SELECT * FROM unit WHERE category != '校友公關' AND category != '行政單位' AND category != '學術單位' AND category != '馬祖'";
                         $result = mysqli_query($link, $sql);
 
                         if ($result->num_rows > 0) {
