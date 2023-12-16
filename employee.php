@@ -203,12 +203,12 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="EPhone" class="form-label">聯絡方式：</label>
-                                    <input type="text" class="form-control" id="EPhone" name="EPhone" value='<?php echo $EPhone?>'/>
+                                    <input type="text" class="form-control" id="EPhone" name="EPhone" value='<?php if(empty($EPhone)){echo "暫無資料";}else{echo $EPhone;}?>'/>
                                     
                                 </div>
                                 <div class="mb-3">
                                     <label for="address" class="form-label">地址：</label>
-                                    <input type="text" class="form-control" id="address" name="address" value='<?php echo $address?>'/>
+                                    <input type="text" class="form-control" id="address" name="address" value='<?php if(empty($address)){echo "暫無資料";}else{echo $address;}?>'/>
                                     
                                 </div>
                                 <div class="mb-3">

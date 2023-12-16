@@ -89,7 +89,7 @@
 
         $reference = $_SERVER['REQUEST_URI'];
         $parts = explode('=', $reference);
-        $part = urldecode($parts[1]);//取網址中的DName
+        $part = urldecode($parts[1]);//取網址中的UName
         
         $query = "SELECT * FROM unit WHERE UName = '$part'";
         
