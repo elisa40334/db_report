@@ -8,6 +8,15 @@
     <title>海大教職員資訊查詢系統</title>
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="index.js">
+    <style>
+        fieldset {
+            margin-bottom: 20px;
+        }
+
+        label {
+            margin-right: 10px;
+        }
+    </style>
 </head>
 
 <body>
@@ -51,12 +60,28 @@
             </div>
             <form  class="combined-sections" action="text.php" method="POST">
                 <div class="search-bar">
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="搜尋..."
-                            style="background-color: rgb(94, 97, 101)" name="search">
-                        <button class="btn btn-secondary search-button" type="submit" id="button-addon2"
-                            style="background: url('resource/magnifier.png') no-repeat center center; background-size: contain; "></button>
-                    </div>
+                <div class="search-bar">
+                    <span id="radioButtonClass">
+                        <input id="radioButtonClass_0" type="radio" name="radioButtonClass" value="0" checked="checked">
+                        <label for="radioButtonClass_0">名字</label>
+
+                        <input id="radioButtonClass_1" type="radio" name="radioButtonClass" value="1">
+                        <label for="radioButtonClass_1">職位</label>
+
+                        <input id="radioButtonClass_2" type="radio" name="radioButtonClass" value="2">
+                        <label for="radioButtonClass_2">薪水</label>
+                    </span>
+
+                    <select id="salaryType" style="display: none;" name="salaryType">
+                        <option value="min">最低薪資</option>
+                        <option value="max">最高薪資</option>
+                    </select>
+
+                    <input name="searchName" type="text" maxlength="64" id="searchName" style="display: inline-block;">
+                    
+                    <input type="submit" name="QUERY_BTN7" value="查詢" id="QUERY_BTN7" class="btn" style="border: 1px solid #000; padding-top: 3px; padding-bottom: 3px;"  ml="CB_關鍵字查詢">
+                    
+                </div>
                 </div>
                 <!--hover會跑掉算了css真的好難QQ-->
                 <div class="dropdown">
@@ -345,6 +370,28 @@
             </div>
         </div>
     </main>
+    <script>
+        // Function to show or hide the salaryType select and searchName input based on the radio button selection
+        function toggleInputVisibility() {
+            const radioButtonValue = document.querySelector('input[name="radioButtonClass"]:checked').value;
+            const salaryTypeSelect = document.getElementById('salaryType');
+            const qChLessonInput = document.getElementById('searchName');
+
+            if (radioButtonValue === '2') {
+                salaryTypeSelect.style.display = 'inline-block';
+                qChLessonInput.style.display = 'none';
+            } else {
+                salaryTypeSelect.style.display = 'none';
+                qChLessonInput.style.display = 'inline-block';
+            }
+        }
+
+        // Attach the toggleInputVisibility function to the change event of radio buttons
+        const radioButtons = document.querySelectorAll('input[name="radioButtonClass"]');
+        radioButtons.forEach(radioButton => {
+            radioButton.addEventListener('change', toggleInputVisibility);
+        });
+    </script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
