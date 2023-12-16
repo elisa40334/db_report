@@ -82,7 +82,7 @@
                         ?>
                     </td>
                     <td rowspan="2" style="width: 30%;  border-left: 2px solid white;padding: 5px;">
-                    <img src=<?php echo $row['photo_link'] ?>
+                    <img src="<?php echo $row['photo_link']?>"
                             alt="Employee Photo" width=150px;>
                     </td>
                 </tr>
