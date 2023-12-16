@@ -12,7 +12,7 @@
     require_once 'dbconnect.php';
 
     // sql語法存在變數中
-    $sql = "INSERT INTO  `employee` (`EId`,`EName`, `EPhone`, `address`, `position`, `salary`, `DName`) VALUES ($EId,$EName,$EPhone,$address,$position,$salary,(SELECT DName FROM department WHERE DName = '$DName')) ";
+    $sql = "INSERT INTO  `employee` (`EId`,`EName`, `EPhone`, `address`, `position`, `salary`, `DName`) VALUES ('$EId','$EName','$EPhone','$address','$position','$salary',(SELECT DName FROM department WHERE DName = '$DName')) ";
 
     // 用mysqli_query方法執行(sql語法)將結果存在變數中
     $result = mysqli_query($link,$sql);
@@ -31,4 +31,6 @@
         echo "{$sql} 語法執行失敗，錯誤訊息: " . mysqli_error($link);
     }
     mysqli_close($link); 
+
+    header("Refresh:0; index.php");
  ?>

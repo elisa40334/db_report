@@ -82,7 +82,7 @@
                         ?>
                     </td>
                     <td rowspan="2" style="width: 30%;  border-left: 2px solid white;padding: 5px;">
-                        <img src=<?php echo $row['photo_link'] ?>
+                        <img src="https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/2023/10/05/0/25837663.jpg&s=Y&x=0&y=0&sw=1280&sh=853&sl=W&fw=1050"
                             alt="Employee Photo" width=150px;>
                     </td>
                 </tr>
@@ -173,8 +173,8 @@
                     </td>
                 </tr>
                 <?php
-				        }
-                    } 
+				    }
+                } 
 			    ?>
             </table>
         </div>
@@ -190,41 +190,73 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-container mt-3">
-                            <form id="employee-form" method="post">
+                            <form id="employee-form" action="edit.php" method="post">
                                 <div class="mb-3">
                                     <label for="EId" class="form-label">員工ID：</label>
-                                    <input type="text" class="form-control" id="EId" name="EId" setValue='<?php echo $EId?>'/>
-
+                                    <input type="text" class="form-control" id="EId" name="EId" placeholder='<?php echo $EId?>'/>
+                                    <?php
+                                        //print empty(@$_POST["EId"]);
+                                        print $EId;
+                                        print (empty(@$_POST["EId"]));
+                                        if(empty(@$_POST["EId"])){
+                                            @$_POST["EId"]=$EId;
+                                            //setcookie('mycookie',$EId);//mycookie存沒有編輯的資料
+                                        }
+                                    ?>
                                 </div>
                                 <div class="mb-3">
                                     <label for="EName" class="form-label">姓名：</label>
-                                    <input type="text" class="form-control" id="EName" name="EName" setValue="<?php echo $EName?>"/>
-
+                                    <input type="text" class="form-control" id="EName" name="EName" placeholder='<?php echo $EName?>'/>
+                                    <?php
+                                        $EName = @$_GET['EName'];
+                                        $sql = "UPDATE 'employee' SET EName = $EName WHERE EName = '$part'";
+                                        
+                                    ?>
                                 </div>
                                 <div class="mb-3">
                                     <label for="EPhone" class="form-label">聯絡方式：</label>
-                                    <input type="text" class="form-control" id="EPhone" name="EPhone" setValue='<?php echo $EPhone?>'/>
-
+                                    <input type="text" class="form-control" id="EPhone" name="EPhone" placeholder='<?php echo $EPhone?>'/>
+                                    <?php
+                                        $EPhone = @$_GET['EPhone'];
+                                        $sql = "UPDATE 'employee' SET EPhone = $EPhone WHERE EName = '$part'";
+                                        
+                                    ?>
                                 </div>
                                 <div class="mb-3">
                                     <label for="address" class="form-label">地址：</label>
-                                    <input type="text" class="form-control" id="address" name="address" setValue='<?php echo $address?>'/>
-
+                                    <input type="text" class="form-control" id="address" name="address" placeholder='<?php echo $address?>'/>
+                                    <?php
+                                        $address = @$_GET['address'];
+                                        $sql = "UPDATE 'employee' SET address = $address WHERE EName = '$part'";
+                                        
+                                    ?>
                                 </div>
                                 <div class="mb-3">
                                     <label for="position" class="form-label">職位：</label>
-                                    <input type="text" class="form-control" id="position" name="position" setValue='<?php echo $position?>'/>
-
+                                    <input type="text" class="form-control" id="position" name="position" placeholder='<?php echo $position?>'/>
+                                    <?php
+                                        $position = @$_GET['position'];
+                                        $sql = "UPDATE 'employee' SET position = $position WHERE EName = '$part'";
+                                        
+                                    ?>
                                 </div>
                                 <div class="mb-3">
                                     <label for="salary" class="form-label">薪水：</label>
-                                    <input type="text" class="form-control" id="salary" name="salary" setValue='<?php echo $salary?>'/>
-
+                                    <input type="text" class="form-control" id="salary" name="salary" placeholder='<?php echo $salary?>'/>
+                                    <?php
+                                        $salary = @$_GET['salary'];
+                                        $sql = "UPDATE 'employee' SET salary = $salary WHERE EName = '$part'";
+                                        
+                                    ?>
                                 </div>
                                 <div class="mb-3">
                                     <label for="DName" class="form-label">所屬部門：</label>
-                                    <input type="text" class="form-control" id="DName" name="DName" setValue='<?php echo $DName?>'/>
-            
+                                    <input type="text" class="form-control" id="DName" name="DName" placeholder='<?php echo $DName?>'/>
+                                    <?php
+                                        $DName = @$_GET['DName'];
+                                        $sql = "UPDATE 'employee' SET DName = $DName WHERE EName = '$part'";
+                                        
+                                    ?>
                                 </div>
                                 <div style="text-align: center;">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>

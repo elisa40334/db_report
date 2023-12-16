@@ -244,7 +244,7 @@
 
                         <div class="form-container mt-3">
                             <!--單位-->
-                            <form id="unit-form" style="display: block;">
+                            <form id="unit-form" style="display: block;" action="insertUnit.php" method="POST">
                                 <div class="mb-3">
                                     <label for="UId" class="form-label">單位ID：</label>
                                     <input type="text" class="form-control" id="UId" name="UId">
@@ -254,13 +254,17 @@
                                     <input type="text" class="form-control" id="UName" name="UName">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="Category" class="form-label">單位種類：</label>
-                                    <input type="text" class="form-control" id="Category" name="Category">
+                                    <label for="category" class="form-label">單位種類：</label>
+                                    <input type="text" class="form-control" id="category" name="category">
+                                </div>
+                                <div>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                                    <button type="submit" class="btn btn-primary">確認更新</button>
                                 </div>
                             </form>
 
                             <!--部門-->
-                            <form id="department-form" style="display: none;">
+                            <form id="department-form" style="display: none;" action="insertDepartment.php" method="POST">
                                 <div class="mb-3">
                                     <label for="DId" class="form-label">部門ID：</label>
                                     <input type="text" class="form-control" id="DId" name="DId">
@@ -293,10 +297,14 @@
                                     <label for="UName" class="form-label">所屬單位：</label>
                                     <input type="text" class="form-control" id="UName" name="UName">
                                 </div>
+                                <div>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                                    <button type="submit" class="btn btn-primary">確認更新</button>
+                                </div>
                             </form>
 
                             <!--員工-->
-                            <form id="employee-form" style="display: none;">
+                            <form id="employee-form" style="display: none;" action="insertEmployee.php" method="POST">
                                 <div class="mb-3">
                                     <label for="EId" class="form-label">員工ID：</label>
                                     <input type="text" class="form-control" id="EId" name="EId">
@@ -325,13 +333,14 @@
                                     <label for="DName" class="form-label">所屬部門：</label>
                                     <input type="text" class="form-control" id="DName" name="DName">
                                 </div>
+                                <div>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                                    <button type="submit" class="btn btn-primary">確認更新</button>
+                                </div>
                             </form>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-                        <button type="submit" class="btn btn-primary">確認更新</button>
-                    </div>
+                    
                 </div>
             </div>
         </div>
