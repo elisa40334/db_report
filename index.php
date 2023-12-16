@@ -2,7 +2,9 @@
 <html lang="zh-TW">
 
 <!--RWD好難 我放棄QQ-->
-
+<?php
+session_start();
+?>
 <head>
     <meta charset="UTF-8">
     <title>海大教職員資訊查詢系統</title>
