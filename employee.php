@@ -82,7 +82,7 @@
                         ?>
                     </td>
                     <td rowspan="2" style="width: 30%;  border-left: 2px solid white;padding: 5px;">
-                        <img src="https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/2023/10/05/0/25837663.jpg&s=Y&x=0&y=0&sw=1280&sh=853&sl=W&fw=1050"
+                        <img src=<?php echo $row['photo_link'] ?>
                             alt="Employee Photo" width=150px;>
                     </td>
                 </tr>
@@ -173,8 +173,8 @@
                     </td>
                 </tr>
                 <?php
-				    }
-                } 
+				        }
+                    } 
 			    ?>
             </table>
         </div>
