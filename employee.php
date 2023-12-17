@@ -193,12 +193,12 @@
                             <form id="employee-form" action="editEmployee.php" method="POST">
                                 <div class="mb-3">
                                     <label for="EId" class="form-label">員工ID：</label>
-                                    <input type="text" class="form-control" id="EId" name="EId" value='<?php echo $EId?>'/>
+                                    <input type="text" class="form-control" id="EId" name="EId" value='<?php if(empty($EId)){echo "暫無資料";}else{echo $EId;}?>'/>
                                     
                                 </div>
                                 <div class="mb-3">
                                     <label for="EName" class="form-label">姓名：</label>
-                                    <input type="text" class="form-control" id="EName" name="EName" value='<?php echo $EName?>'/>
+                                    <input type="text" class="form-control" id="EName" name="EName" value='<?php if(empty($EName)){echo "暫無資料";}else{echo $EName;}?>'/>
                                     
                                 </div>
                                 <div class="mb-3">
@@ -213,17 +213,17 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="position" class="form-label">職位：</label>
-                                    <input type="text" class="form-control" id="position" name="position" value='<?php echo $position?>'/>
+                                    <input type="text" class="form-control" id="position" name="position" value='<?php if(empty($position)){echo "暫無資料";}else{echo $position;}?>'/>
                                     
                                 </div>
                                 <div class="mb-3">
                                     <label for="salary" class="form-label">薪水：</label>
-                                    <input type="text" class="form-control" id="salary" name="salary" value='<?php echo $salary?>'/>
+                                    <input type="text" class="form-control" id="salary" name="salary" value='<?php if(empty($salary)){echo "暫無資料";}else{echo $salary;}?>'/>
                                     
                                 </div>
                                 <div class="mb-3">
                                     <label for="DName" class="form-label">所屬部門：</label>
-                                    <input type="text" class="form-control" id="DName" name="DName" value='<?php echo $DName?>'/>
+                                    <input type="text" class="form-control" id="DName" name="DName" value='<?php if(empty($DName)){echo "暫無資料";}else{echo $DName;}?>'/>
                                     
                                 </div>
                                 <div style="text-align: center;">
