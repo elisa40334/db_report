@@ -31,6 +31,7 @@
         <div id="department-name"></div>
 
         <?php
+        session_start();
         $URL = $_SERVER['REQUEST_URI'];
         $parts = explode('?', $URL);
         $parts = explode('=', $parts[1]);
@@ -44,13 +45,24 @@
             // echo $part;
             $sql = "SELECT * FROM employee WHERE EName LIKE '%$part%'";
             $result = mysqli_query($link, $sql);
-            if ($result->num_rows > 0) {
-                // output data of each row
-                while ($row = $result->fetch_assoc()) {
-                    echo "<br><div id='department-result'><a href='employee.php?employee=" . $row["EName"] . "' class='remove_line'>" . $row["EName"] . " 職位: " . $row["position"] . " " . " 電話: " . $row["EPhone"] . "</a><br>";
+            if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+                if ($result->num_rows > 0) {
+                    // output data of each row
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<br><div id='department-result'><a href='employee.php?employee=" . $row["EName"] . "' class='remove_line'>" . $row["EName"] . " 職位: " . $row["position"] . " " . " 電話: " . $row["EPhone"] . "</a><br>";
+                    }
+                } else {
+                    echo "<br><div id='department-result'>暫無資料<br>";
                 }
-            } else {
-                echo "<br><div id='department-result'>暫無資料<br>";
+            }else{
+                if ($result->num_rows > 0) {
+                    // output data of each row
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<br><div id='department-result'>" . $row["EName"] . " 職位: " . $row["position"] . " " . " 電話: " . $row["EPhone"] . "<br>";
+                    }
+                } else {
+                    echo "<br><div id='department-result'>暫無資料<br>";
+                }
             }
         } else {
             echo "<br><div id='department-result'>暫無資料<br>";
