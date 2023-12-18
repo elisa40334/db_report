@@ -17,7 +17,11 @@
             $part = urldecode($parts[1]);
             $part = iconv('UTF-8', 'ISO-8859-1//IGNORE', $part);
             //抓單位名字放最上面/
-            echo "<div id='department-name' style='font-style:italic; font-size: 40px; color: white;'>以下是‘" . $part . "’的搜尋結果</div>";
+            if($part == 'min'){
+                echo "<div id='department-name' style='font-style:italic; font-size: 40px; color: white;'>以下是最低薪資的搜尋結果</div>";
+            }else if($part == "max"){
+                echo "<div id='department-name' style='font-style:italic; font-size: 40px; color: white;'>以下是最高薪資的搜尋結果</div>";
+            }
             ?>
         </div>
         
@@ -40,15 +44,19 @@
                 require_once 'dbconnect.php';
                 // 設置一個空陣列來放資料
                 $datas = array();
-                // echo $part;
-                $sql = "SELECT * FROM employee WHERE EName LIKE '%$part%'";
+                if($part == 'min'){
+                    $sql = "SELECT * FROM employee WHERE salary = (SELECT MIN(salary) FROM employee);";
+                }else if($part == "max"){
+                    $sql = "SELECT * FROM employee WHERE salary = (SELECT MAX(salary) FROM employee);";
+                }
+                
                 $result = mysqli_query($link,$sql);
                 if ($result->num_rows > 0) {
                     // output data of each row
                     while ($row = $result->fetch_assoc()) {
-                        echo "<br><div id='department-result'><a class='dropdown-item' href='employee.php?employee=" . $row["EName"] . "'>" . $row["EName"] . " 職位: " . $row["position"] . " " . " 電話: " . $row["EPhone"] . "</a><br>";
+                        echo "<br><div id='department-result'><a class='dropdown-item' href='employee.php?employee=" . $row["EName"] . "'>" . $row["EName"] . " 職位: " . $row["position"] . " " . " 電話: " . $row["EPhone"] .  "</a><br>";
                     }
-                } else {
+                }else{
                     echo "<br><div id='department-result' dropdown-item'>暫無資料<br>";
                 }
             } else {
