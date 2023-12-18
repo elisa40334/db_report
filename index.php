@@ -89,8 +89,6 @@ session_start();
                     <button class="btn hamburger" type="button" data-bs-toggle="dropdown" aria-expanded="false"
                         style="background: url('resource/ham.png') no-repeat center center; background-size: contain; height: 35px; width: 35px;"></button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                data-bs-target="#addModal">新增</button></li>
                         <?php
                             if (!isset($_SESSION['loggedin'])) $login = 0;
                             else $login = 1;
@@ -99,6 +97,7 @@ session_start();
                                 data-bs-target="#login">管理員登入</button></li>';
                             }
                             else{
+                                echo '<li><button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#addModal">新增</button></li>';
                                 echo '<li><a href="logout.php" style="text-decoration:none;"><button type="button" class="dropdown-item" data-bs-toggle="modal"
                                 data-bs-target="#logout">登出</button></li></a>';
                             }
