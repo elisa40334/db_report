@@ -330,6 +330,10 @@
                             <!--員工-->
                             <form id="employee-form" style="display: none;" action="insertEmployee.php" method="POST">
                                 <div class="mb-3">
+                                    <label for="photo_link" class="form-label">照片鏈接：</label>
+                                    <input type="text" class="form-control" id="photo_link" name="photo_link">
+                                </div>
+                                <div class="mb-3">
                                     <label for="EId" class="form-label">員工ID：</label>
                                     <input type="text" class="form-control" id="EId" name="EId">
                                 </div>
