@@ -86,6 +86,16 @@
         } else {
             echo "<br><div id='non-unit-result'>暫無資料<br>";
         }
+
+        $reference = $_SERVER['REQUEST_URI'];
+        $parts = explode('=', $reference);
+        $part = urldecode($parts[1]);//取網址中的UName
+        
+        $query = "SELECT * FROM unit WHERE UName = '$part'";
+        
+        $result=mysqli_query($link,$query);
+        global $data;
+        $data = $result->fetch_assoc();
         ?>
 
         <!-- 懸浮視窗 -->
@@ -98,18 +108,18 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-container mt-3">
-                            <form id="unit-form">
+                            <form id="unit-form" action="editUnit.php" method="POST">
                                 <div class="mb-3">
                                     <label for="UId" class="form-label">單位ID：</label>
-                                    <input type="text" class="form-control" id="UId" name="UId">
+                                    <input type="text" class="form-control" id="UId" name="UId" value='<?php echo $data['UId']?>'/>
                                 </div>
                                 <div class="mb-3">
                                     <label for="UName" class="form-label">單位名稱：</label>
-                                    <input type="text" class="form-control" id="UName" name="UName">
+                                    <input type="text" class="form-control" id="UName" name="UName" value='<?php echo $data['UName']?>'/>
                                 </div>
                                 <div class="mb-3">
                                     <label for="Category" class="form-label">單位種類：</label>
-                                    <input type="text" class="form-control" id="Category" name="Category">
+                                    <input type="text" class="form-control" id="Category" name="Category" value='<?php echo $data['Category']?>'/>
                                 </div>
                                 <div>
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>

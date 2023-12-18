@@ -36,6 +36,7 @@
             echo "<div id='department-name' style='font-style:italic; font-size: 40px; color: white;'>" . $part . "</div>";
             ?>
         </div>
+
         <!--hover會跑掉算了css真的好難QQ-->
         <div class="dropdown">
             <button class="btn hamburger" type="button" data-bs-toggle="dropdown" aria-expanded="false"
@@ -82,6 +83,16 @@
         } else {
             echo "<br><div id='department-result' dropdown-item'>暫無資料<br>";
         }
+
+        $reference = $_SERVER['REQUEST_URI'];
+        $parts = explode('=', $reference);
+        $part = urldecode($parts[1]);//取網址中的DName
+        $query = "SELECT * FROM department WHERE DName = '$part'";
+        
+        $result=mysqli_query($link,$query);
+        global $data;
+        $data = $result->fetch_assoc();
+        
         ?>
 
         <!-- 懸浮視窗 -->
@@ -94,38 +105,38 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-container mt-3">
-                            <form id="department-form">
+                            <form id="department-form" action="editDepartment.php" method="POST">
                                 <div class="mb-3">
                                     <label for="DId" class="form-label">部門ID：</label>
-                                    <input type="text" class="form-control" id="DId" name="DId">
+                                    <input type="text" class="form-control" id="DId" name="DId" value='<?php echo $data['DId']?>'/>
                                 </div>
                                 <div class="mb-3">
                                     <label for="DName" class="form-label">部門名稱：</label>
-                                    <input type="text" class="form-control" id="DName" name="DName">
+                                    <input type="text" class="form-control" id="DName" name="DName" value='<?php echo $data['DName']?>'/>
                                 </div>
                                 <div class="mb-3">
                                     <label for="DLocation" class="form-label">位置：</label>
-                                    <input type="text" class="form-control" id="DLocation" name="DLocation">
+                                    <input type="text" class="form-control" id="DLocation" name="DLocation" value='<?php echo $data['DLocation']?>'/>
                                 </div>
                                 <div class="mb-3">
                                     <label for="DPhone" class="form-label">電話：</label>
-                                    <input type="text" class="form-control" id="DPhone" name="DPhone">
+                                    <input type="text" class="form-control" id="DPhone" name="DPhone" value='<?php echo $data['DPhone']?>'/>
                                 </div>
                                 <div class="mb-3">
                                     <label for="DNet" class="form-label">網站：</label>
-                                    <input type="text" class="form-control" id="DNet" name="DNet">
+                                    <input type="text" class="form-control" id="DNet" name="DNet" value='<?php echo $data['DNet']?>'/>
                                 </div>
                                 <div class="mb-3">
                                     <label for="DEmail" class="form-label">e-mail：</label>
-                                    <input type="text" class="form-control" id="DEmail" name="DEmail">
+                                    <input type="text" class="form-control" id="DEmail" name="DEmail" value='<?php echo $data['DEmail']?>'/>
                                 </div>
                                 <div class="mb-3">
                                     <label for="DFax" class="form-label">傳真：</label>
-                                    <input type="text" class="form-control" id="DFax" name="DFax">
+                                    <input type="text" class="form-control" id="DFax" name="DFax" value='<?php echo $data['DFax']?>'/>
                                 </div>
                                 <div class="mb-3">
                                     <label for="UName" class="form-label">所屬單位：</label>
-                                    <input type="text" class="form-control" id="UName" name="UName">
+                                    <input type="text" class="form-control" id="UName" name="UName" value='<?php echo $data['UName']?>'/>
                                 </div>
                                 <div>
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>

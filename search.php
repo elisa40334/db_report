@@ -50,7 +50,7 @@
                     }
                 } else {
                     echo "<br><div id='department-result' dropdown-item'>暫無資料<br>";
-                }
+
             } else {
                 echo "<br><div id='department-result'>暫無資料<br>";
             }

@@ -13,7 +13,8 @@
     $part = urldecode($parts[1]);//取網址中的EName
 
     $sql = "UPDATE employee SET EId='$EId',EName='$EName' ,EPhone='$EPhone', address='$address',position='$position',salary='$salary',DName='$DName' WHERE EName='$part'";
-    mysqli_query($link, $sql);
+    $result=mysqli_query($link, $sql);
+    if($result){echo "成功";}
 
     mysqli_close($link);
     header("Refresh:0; employee.php?employee=". urlencode($EName));
