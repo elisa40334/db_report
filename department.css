@@ -1,43 +1,3 @@
-/* 基本樣式 */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200&display=swap');
-
-body {
-    font-family: 'Noto Serif TC', serif;
-    margin: 0;
-    padding: 0;
-}
-
-/*固定最上面的東西(往下滑還在)*/
-
-header {
-    font-family: 'Noto Serif TC', serif;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 100px;
-    z-index: 1000;
-    background-color: rgb(40, 50, 60);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-}
-
-.dropdown {
-    display: flex;
-    align-items: center;
-}
-
-
-/*預留位置*/
-
-main {
-    margin-top: 80px;
-    display: flex;
-    justify-content: space-around;
-    padding: 20px;
-}
 
 .no-record {
     display: flex;
@@ -48,7 +8,6 @@ main {
     width: 100%;
     text-align: center;
     font-size: 20px;
-    padding: 20px;
 }
 
 /*編輯form*/

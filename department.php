@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>部門</title>
+    <link rel="stylesheet" href="unit.css">
     <link rel="stylesheet" href="department.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -56,7 +57,7 @@
     </header>
 
     <main>
-
+    </main>
 
         <?php
         $URL = $_SERVER['REQUEST_URI'];
@@ -78,7 +79,7 @@
         if ($result->num_rows > 0) {
             // output data of each row
             while ($row = $result->fetch_assoc()) {
-                echo "<br><div id='department-result'><a class='dropdown-item' href='employee.php?employee=" . $row["EName"] . "'>" . $row["EName"] . " 職位: " . $row["position"] . " " . " 電話: " . $row["EPhone"] . "</a><br>";
+                echo "<br><div id='department-result'><a href='employee.php?employee=" . $row["EName"] . "'  class='remove_line'>" . $row["EName"] . " 職位: " . $row["position"] . " " . " 電話: " . $row["EPhone"] . "</a><br>";
             }
         } else {
             echo "<br><div id='department-result' dropdown-item'>暫無資料<br>";
@@ -150,7 +151,7 @@
             </div>
         </div>
 
-    </main>
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"

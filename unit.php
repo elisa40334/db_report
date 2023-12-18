@@ -57,7 +57,7 @@
     </header>
 
     <main>
-
+    </main>
 
         <!--抓單位名字放最上面-->
 
@@ -81,7 +81,7 @@
         if ($result->num_rows > 0) {
             // output data of each row
             while ($row = $result->fetch_assoc()) {
-                echo "<br><div id='unit-result' class='row mt-3'><a class='dropdown-item' href='department.php?department=" . $row["DName"] . "'>" . $row["DName"] . " 地點: " . $row["DLocation"] . " " . " 電話: " . $row["DPhone"] . "</a><br>";
+                echo "<br><div id='unit-result'><a href='department.php?department=" . $row["DName"] . "' class='remove_line'>" . $row["DName"] . " 地點: " . $row["DLocation"] . " " . " 電話: " . $row["DPhone"] . "</a><br>";
             }
         } else {
             echo "<br><div id='non-unit-result'>暫無資料<br>";
@@ -132,7 +132,7 @@
                 </div>
             </div>
         </div>
-    </main>
+    
     <link href="https://fonts.googleapis.com/earlyaccess/cwtexfangsong.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
