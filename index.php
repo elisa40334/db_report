@@ -2,7 +2,9 @@
 <html lang="zh-TW">
 
 <!--RWD好難 我放棄QQ-->
-
+<?php
+session_start();
+?>
 <head>
     <meta charset="UTF-8">
     <title>海大教職員資訊查詢系統</title>
@@ -89,6 +91,18 @@
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                         <li><button type="button" class="dropdown-item" data-bs-toggle="modal"
                                 data-bs-target="#addModal">新增</button></li>
+                        <?php
+                            if (!isset($_SESSION['loggedin'])) $login = 0;
+                            else $login = 1;
+                            if ($login === 0) {
+                                echo '<li><button type="button" class="dropdown-item" data-bs-toggle="modal"
+                                data-bs-target="#login">管理員登入</button></li>';
+                            }
+                            else{
+                                echo '<li><a href="logout.php" style="text-decoration:none;"><button type="button" class="dropdown-item" data-bs-toggle="modal"
+                                data-bs-target="#logout">登出</button></li></a>';
+                            }
+                        ?>
                     </ul>
                 </div>
             </form >
@@ -365,6 +379,35 @@
                         </div>
                     </div>
                     
+                </div>
+            </div>
+        </div>
+         <!--登入-->
+        <div class="modal fade" id="login" tabindex="-1" aria-labelledby="loginLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="loginLabel">管理員登入</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-container mt-3">
+                            <form id="login-form" style="display: block;" action="login.php" method="POST">
+                                <div class="mb-3">
+                                    <label for="username" class="form-label">帳號：</label>
+                                    <input type="text" class="form-control" id="username" name="username">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">密碼：</label>
+                                    <input type="text" class="form-control" id="password" name="password">
+                                </div>
+                                <div>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                                    <button type="submit" class="btn btn-primary">登入</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
