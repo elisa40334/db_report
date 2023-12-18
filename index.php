@@ -7,7 +7,6 @@
     <meta charset="UTF-8">
     <title>海大教職員資訊查詢系統</title>
     <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="index.js">
     <style>
         fieldset {
             margin-bottom: 20px;
@@ -61,7 +60,7 @@
             <form  class="combined-sections" action="text.php" method="POST">
                 <div class="search-bar">
                 <div class="search-bar">
-                    <span id="radioButtonClass">
+                    <span id="radioButtonClass"  style="color:white;">
                         <input id="radioButtonClass_0" type="radio" name="radioButtonClass" value="0" checked="checked">
                         <label for="radioButtonClass_0">名字</label>
 
@@ -79,7 +78,7 @@
 
                     <input name="searchName" type="text" maxlength="64" id="searchName" style="display: inline-block;">
                     
-                    <input type="submit" name="QUERY_BTN7" value="查詢" id="QUERY_BTN7" class="btn" style="border: 1px solid #000; padding-top: 3px; padding-bottom: 3px;"  ml="CB_關鍵字查詢">
+                    <input type="submit" name="QUERY_BTN7" value="查詢" id="QUERY_BTN7" class="btn" style="border: 1px solid #000; padding-top: 3px; padding-bottom: 3px; color:white;"  ml="CB_關鍵字查詢">
                     
                 </div>
                 </div>
