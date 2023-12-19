@@ -72,7 +72,16 @@
                         ?>
                     </td>
                     <td rowspan="2" style="width: 30%;  border-left: 2px solid white;padding: 5px;">
-                    <img src=<?php echo $row['photo_link'] ?>
+                    <img src=
+                        <?php 
+                            global $photo_link;
+                            $photo_link=$row['photo_link'];
+                            if(empty($row['photo_link'])){
+                            echo 'https://cf-cdn-blog.yuzu.im/usr/themes/Material/null_avatar.jpg';
+                            }else{
+                                echo $photo_link;
+                            }
+                        ?>
 
                             alt="Employee Photo" width=150px;>
                     </td>
@@ -225,6 +234,12 @@
 
                                     
                                 </div>
+
+                                <div class="mb-3">
+                                    <label for="DName" class="form-label">照片連結：</label>
+                                    <input type="text" class="form-control" id="photo_link" name="photo_link" value='<?php if(empty($photo_link)){echo "暫無資料";}else{echo $photo_link;}?>'/>
+                                </div>
+
                                 <div style="text-align: center;">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
                                     <button type="submit" class="btn btn-primary">確認更新</button>
