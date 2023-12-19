@@ -12,13 +12,11 @@ require_once 'dbconnect.php';
 $URL = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'No referer';
 $parts = explode('=', $URL);
 $part = urldecode($parts[1]); //取網址中的EName
-
 $sql = "UPDATE employee SET EId='$EId',EName='$EName' ,EPhone='$EPhone', address='$address',position='$position',salary='$salary',DName='$DName',photo_link='$photo_link' WHERE EName='$part'";
-$result = mysqli_query($link, $sql);
 if ($result) {
     echo "成功";
     echo "<script> alert('員工編輯成功'); </script>";
-}else{
+} else {
     echo "<script> alert('員工編輯失敗'); </script>";
 }
 

@@ -237,7 +237,7 @@
 
                                 <div class="mb-3">
                                     <label for="DName" class="form-label">照片連結：</label>
-                                    <input type="text" class="form-control" id="photo_link" name="photo_link" value='<?php if(empty($photo_link)){echo "暫無資料";}else{echo $photo_link;}?>'/>
+                                    <input type="text" class="form-control" id="photo_link" name="photo_link" value='<?php if(empty($photo_link)){echo 'https://cf-cdn-blog.yuzu.im/usr/themes/Material/null_avatar.jpg';}else{echo $photo_link;}?>'/>
                                 </div>
 
                                 <div style="text-align: center;">

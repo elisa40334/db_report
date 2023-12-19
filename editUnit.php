@@ -9,7 +9,9 @@
     $part = urldecode($parts[1]);//取網址中的EName
     // print $Category;
     $sql = "UPDATE unit SET UId='$UId',UName='$UName' ,Category='$Category' WHERE UName='$part'";
-    mysqli_query($link, $sql);
+    $result=mysqli_query($link, $sql);
+    if($result){echo "編輯成功";}
+    else{echo "編輯失敗";}
 
     mysqli_close($link);
     header("Refresh:0; index.php");
