@@ -17,8 +17,14 @@
     $sql = "UPDATE department SET DId='$DId', DName='$DName' ,DLocation='$DLocation', DNet='$DNet', DEmail='$DEmail', DFax='$DFax',UName='$UName' WHERE DName='$part'";
     //$sql = "UPDATE employee SET EId='$EId',EName='$EName' ,EPhone='$EPhone', address='$address',position='$position',salary='$salary',DName='$DName' WHERE EName='$part'";
     $result=mysqli_query($link, $sql);
-    if($result){echo "成功";}
-    else{echo "失敗";}
+    if($result){
+        echo "成功";
+        echo "<script> alert('部門編輯成功'); </script>";
+    }
+    else{
+        echo "失敗";
+        echo "<script> alert('部門編輯失敗'); </script>";
+    }
     //print $r;
     mysqli_close($link);
     header("Refresh:0; unit.php?unit=". urlencode($UName));
