@@ -294,7 +294,7 @@
                                     <input type="text" class="form-control" id="DId" name="DId">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="DName" class="form-label">部門名稱：</label>
+                                    <label for="DName" class="form-label">部門名稱(必填)：</label>
                                     <input type="text" class="form-control" id="DName" name="DName">
                                 </div>
                                 <div class="mb-3">
@@ -319,7 +319,25 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="UName" class="form-label">所屬單位：</label>
-                                    <input type="text" class="form-control" id="UName" name="UName">
+                                    <select class="form-control" id="UName" name="UName">
+                                        <?php
+                                        require_once 'dbconnect.php';
+                                        // 設置一個空陣列來放資料
+                                        $datas = array();
+                                        // sql語法存在變數中
+                                        $sql = "SELECT UName FROM unit";
+                                        $result = mysqli_query($link, $sql);
+
+                                        if ($result->num_rows > 0) {
+                                            // output data of each row
+                                            while ($row = $result->fetch_assoc()) {
+                                                echo "<option>" . $row["UName"] . "</option>";
+                                            }
+                                        } else {
+                                            echo "<br><div id='department-result' dropdown-item'>暫無資料<br>";
+                                        }
+                                        ?>
+                                    </select>
                                 </div>
                                 <div>
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
@@ -338,7 +356,7 @@
                                     <input type="text" class="form-control" id="EId" name="EId">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="EName" class="form-label">姓名：</label>
+                                    <label for="EName" class="form-label">姓名(必填)：</label>
                                     <input type="text" class="form-control" id="EName" name="EName">
                                 </div>
                                 <div class="mb-3">
@@ -350,8 +368,27 @@
                                     <input type="text" class="form-control" id="address" name="address">
                                 </div>
                                 <div class="mb-3">
+                                    
                                     <label for="position" class="form-label">職位：</label>
-                                    <input type="text" class="form-control" id="position" name="position">
+                                    <select class="form-control" id="position" name="position">
+                                        <?php
+                                        require_once 'dbconnect.php';
+                                        // 設置一個空陣列來放資料
+                                        $datas = array();
+                                        // sql語法存在變數中
+                                        $sql = "SELECT PName FROM position";
+                                        $result = mysqli_query($link, $sql);
+
+                                        if ($result->num_rows > 0) {
+                                            // output data of each row
+                                            while ($row = $result->fetch_assoc()) {
+                                                echo "<option>" . $row["PName"] . "</option>";
+                                            }
+                                        } else {
+                                            echo "<br><div id='department-result' dropdown-item'>暫無資料<br>";
+                                        }
+                                        ?>
+                                    </select>
                                 </div>
                                 <div class="mb-3">
                                     <label for="salary" class="form-label">薪水：</label>
@@ -359,7 +396,25 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="DName" class="form-label">所屬部門：</label>
-                                    <input type="text" class="form-control" id="DName" name="DName">
+                                    <select class="form-control" id="DName" name="DName">
+                                        <?php
+                                        require_once 'dbconnect.php';
+                                        // 設置一個空陣列來放資料
+                                        $datas = array();
+                                        // sql語法存在變數中
+                                        $sql = "SELECT DName FROM department";
+                                        $result = mysqli_query($link, $sql);
+
+                                        if ($result->num_rows > 0) {
+                                            // output data of each row
+                                            while ($row = $result->fetch_assoc()) {
+                                                echo "<option>" . $row["DName"] . "</option>";
+                                            }
+                                        } else {
+                                            echo "<br><div id='department-result' dropdown-item'>暫無資料<br>";
+                                        }
+                                        ?>
+                                    </select>
                                 </div>
                                 <div>
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
