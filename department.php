@@ -126,42 +126,42 @@
                             <div class="mb-3">
                                 <label for="DId" class="form-label">部門ID：</label>
                                 <input type="text" class="form-control" id="DId" name="DId"
-                                    value='<?php echo $data['DId'] ?>' />
+                                    value='<?php if(empty($data['DId'])){echo "暫無資料";}else{echo $data['DId'];}?>'/>
                             </div>
                             <div class="mb-3">
                                 <label for="DName" class="form-label">部門名稱：</label>
                                 <input type="text" class="form-control" id="DName" name="DName"
-                                    value='<?php echo $data['DName'] ?>' />
+                                    value='<?php if(empty($data['DName'])){echo "暫無資料";}else{echo $data['DName'];}?>' />
                             </div>
                             <div class="mb-3">
                                 <label for="DLocation" class="form-label">位置：</label>
                                 <input type="text" class="form-control" id="DLocation" name="DLocation"
-                                    value='<?php echo $data['DLocation'] ?>' />
+                                    value='<?php if(empty($data['DLocation'])){echo "暫無資料";}else{echo $data['DLocation'];}?>' />
                             </div>
                             <div class="mb-3">
                                 <label for="DPhone" class="form-label">電話：</label>
                                 <input type="text" class="form-control" id="DPhone" name="DPhone"
-                                    value='<?php echo $data['DPhone'] ?>' />
+                                    value='<?php if(empty($data['DPhone'])){echo "暫無資料";}else{echo $data['DPhone'];}?>' />
                             </div>
                             <div class="mb-3">
                                 <label for="DNet" class="form-label">網站：</label>
                                 <input type="text" class="form-control" id="DNet" name="DNet"
-                                    value='<?php echo $data['DNet'] ?>' />
+                                    value='<?php if(empty($data['DNet'])){echo "暫無資料";}else{echo $data['DNet'];}?>' />
                             </div>
                             <div class="mb-3">
                                 <label for="DEmail" class="form-label">e-mail：</label>
                                 <input type="text" class="form-control" id="DEmail" name="DEmail"
-                                    value='<?php echo $data['DEmail'] ?>' />
+                                    value='<?php if(empty($data['DEmail'])){echo "暫無資料";}else{echo $data['DEmail'];}?>' />
                             </div>
                             <div class="mb-3">
                                 <label for="DFax" class="form-label">傳真：</label>
                                 <input type="text" class="form-control" id="DFax" name="DFax"
-                                    value='<?php echo $data['DFax'] ?>' />
+                                    value='<?php if(empty($data['DFax'])){echo "暫無資料";}else{echo $data['DFax'];}?>' />
                             </div>
                             <div class="mb-3">
                                 <label for="UName" class="form-label">所屬單位：</label>
                                 <input type="text" class="form-control" id="UName" name="UName"
-                                    value='<?php echo $data['UName'] ?>' />
+                                    value='<?php if(empty($data['UName'])){echo "暫無資料";}else{echo $data['UName'];}?>' />
                             </div>
                             <div>
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
