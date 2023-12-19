@@ -24,12 +24,15 @@
     // mysqli_insert_id可以抓到第一筆的id
     $new_id= mysqli_insert_id ($link);
     echo "新增成功";
+    echo "<script> alert('員工新增成功'); </script>";
     }
     elseif(mysqli_affected_rows($link)==0) {
         echo "無資料新增";
+        echo "<script> alert('員工新增失敗'); </script>";
     }
     else {
         echo "{$sql} 語法執行失敗，錯誤訊息: " . mysqli_error($link);
+        echo "<script> alert('員工新增失敗'); </script>";
     }
     mysqli_close($link); 
 
