@@ -24,7 +24,7 @@
         echo "失敗";
         echo "<script> alert('部門編輯失敗'); </script>";
     }
-    //print $r;
+    
     mysqli_close($link);
     header("Refresh:0; unit.php?unit=". urlencode($UName));
 ?>

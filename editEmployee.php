@@ -17,10 +17,11 @@ $result = mysqli_query($link, $sql);
 if ($result) {
     echo "成功";
     echo "<script> alert('員工編輯成功'); </script>";
+    mysqli_close($link);
+    header("Refresh:0; employee.php?employee=" . urlencode($EName));
 } else {
     echo "<script> alert('員工編輯失敗'); </script>";
+    mysqli_close($link);
+    header("Refresh:0; department.php?department=" . urlencode($DName));
 }
-
-mysqli_close($link);
-header("Refresh:0; employee.php?employee=" . urlencode($EName));
 ?>
