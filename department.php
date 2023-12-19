@@ -77,7 +77,7 @@
         if ($result->num_rows > 0) {
             // output data of each row
             while ($row = $result->fetch_assoc()) {
-                echo "<br><div id='department-result'><a class='dropdown-item' href='employee.php?employee=" . $row["EName"] . "'>" . $row["EName"] . " 職位: " . $row["position"] . " " . " 電話: " . $row["EPhone"] . "</a><br>";
+                echo "<br><div id='department-result'><a class='dropdown-item' href='employee.php?employee=" . $row["EName"] . "'>" . $row["EName"] . " 職位: " . ($row["position"] == "" ? "暫無資料" : $row["position"]) . " " . " 電話: " . ($row["EPhone"] == "" ? "暫無資料" : $row["EPhone"]) . "</a><br>";
             }
         } else {
             echo "<br><div id='department-result' dropdown-item'>暫無資料<br>";
