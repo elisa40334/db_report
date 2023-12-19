@@ -6,13 +6,14 @@
     $position = @$_POST['position'];
     $salary = @$_POST['salary'];
     $DName = @$_POST['DName'];
+    $photo_link = @$_POST['photo_link'];
     // echo "用POST測試將HTML內容傳入PHP:<br>";
     // echo "今天的日期為".$EName;
     // 載入db.php來連結資料庫
     require_once 'dbconnect.php';
 
     // sql語法存在變數中
-    $sql = "INSERT INTO  `employee` (`EId`,`EName`, `EPhone`, `address`, `position`, `salary`, `DName`) VALUES ('$EId','$EName','$EPhone','$address','$position','$salary',(SELECT DName FROM department WHERE DName = '$DName')) ";
+    $sql = "INSERT INTO  `employee` (`EId`,`EName`, `EPhone`, `address`, `position`, `salary`, `DName`, `photo_link`) VALUES ('$EId','$EName','$EPhone','$address','$position','$salary',(SELECT DName FROM department WHERE DName = '$DName'),'$photo_link') ";
 
     // 用mysqli_query方法執行(sql語法)將結果存在變數中
     $result = mysqli_query($link,$sql);
