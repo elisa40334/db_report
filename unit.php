@@ -87,10 +87,10 @@
     if ($result->num_rows > 0) {
         // output data of each row
         while ($row = $result->fetch_assoc()) {
-            echo "<br><div id='unit-result'><a href='department.php?department=" . $row["DName"] . "' class='remove_line'>" . $row["DName"] . " 地點: " . $row["DLocation"] . " " . " 電話: " . $row["DPhone"] . "</a><br>";
+            echo "<br><div id='unit-result'><a href='department.php?department=" . $row["DName"] . "' class='remove_line'>" . $row["DName"] . " 地點: " . $row["DLocation"] . " " . " 電話: " . $row["DPhone"] . "</a></div>";
         }
     } else {
-        echo "<br><div id='non-unit-result'>暫無資料<br>";
+        echo "<br><div id='non-unit-result'>暫無資料</div><br>";
     }
 
     $reference = $_SERVER['REQUEST_URI'];
