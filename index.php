@@ -324,7 +324,7 @@ session_start();
                                 </div>
                                 <div class="mb-3">
                                     <label for="DEmail" class="form-label">e-mail：</label>
-                                    <input type="text" class="form-control" id="DEmail" name="DEmail">
+                                    <input type="email" class="form-control" id="DEmail" name="DEmail">
                                 </div>
                                 <div class="mb-3">
                                     <label for="DFax" class="form-label">傳真：</label>
@@ -457,7 +457,7 @@ session_start();
                                 </div>
                                 <div class="mb-3">
                                     <label for="password" class="form-label">密碼：</label>
-                                    <input type="text" class="form-control" id="password" name="password">
+                                    <input type="password" class="form-control" id="password" name="password">
                                 </div>
                                 <div>
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>

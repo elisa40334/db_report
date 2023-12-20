@@ -150,7 +150,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="DEmail" class="form-label">e-mail：</label>
-                                <input type="text" class="form-control" id="DEmail" name="DEmail"
+                                <input type="email" class="form-control" id="DEmail" name="DEmail"
                                     value='<?php if(empty($data['DEmail'])){echo "暫無資料";}else{echo $data['DEmail'];}?>' />
                             </div>
                             <div class="mb-3">
